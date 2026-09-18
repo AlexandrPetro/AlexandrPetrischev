@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+
+const assetPathPrefix = 'https://www.figma.com/api/mcp/asset/a8e180fc-e4ab-4dbc-a349-a53d9bd19670';
+
+const projects = [
+  {
+    slug: '2b-agency',
+    title: '2b agency',
+    description: 'Агентство медицинского маркетинга полного цикла: комплексный подход к медицинскому маркетингу, сочетающий понимание отрасли с креативными стратегиями и аналитикой.',
+    linkLabel: 'Что я делал в 2b',
+    image: `${assetPathPrefix}/3e6ea.png`,
+  },
+  {
+    slug: 'yandex-crowd',
+    title: 'Яндекс крауд',
+    tags: ['тестовое', 'успешно'],
+    description: 'Задача: разработать дизайн лендинга конференции Yandex pet day, а также подготовить мобильный адаптив.',
+    linkLabel: 'Посмотреть процесс',
+    image: `${assetPathPrefix}/14581.png`,
+  },
+  {
+    slug: 'tvoe-live',
+    title: 'Tvoe live',
+    description: 'Онлайн-кинотеатр с библиотекой фильмов, сериалов, мультфильмов, аниме, дорам и других проектов по единой подписке.',
+    linkLabel: 'Моя роль в Tvoe',
+    image: `${assetPathPrefix}/54725.png`,
+  },
+  {
+    slug: 'uprock',
+    title: 'Обучение в Uprock',
+    description: 'Курс Middle UX/UI designer.',
+    linkLabel: 'Проекты, сделанные с Uprock',
+    image: `${assetPathPrefix}/3fa72.png`,
+  },
+  {
+    slug: 'rassvetay',
+    title: 'Расцветай',
+    description: 'Крупнейший застройщик Новосибирска. В портфеле компании более 40 проектов в разных регионах России.',
+    linkLabel: 'Что я делал в Расцветай',
+    image: `${assetPathPrefix}/373f0.png`,
+  },
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Александр Петрищев — UX/UI дизайнер</title>
+    <meta name="description" content="Портфолио Александра Петрищева, UX/UI дизайнера." />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="На главную">
+        <span class="brand-mark"></span>
+        <span>User name</span>
+      </a>
+      <span class="search-mark" aria-hidden="true">⌕</span>
+    </header>
+
+    <main class="container">
+      <section class="hero section">
+        <div class="hero-shape"></div>
+        <h1>Александр Петрищев</h1>
+        <div class="facts">
+          <div class="fact-row strong">
+            <span>31 год</span>
+            <span>опыт 1,5 года (в дизайне &gt;5 лет)</span>
+            <span>Москва</span>
+          </div>
+          <nav class="links" aria-label="Контакты">
+            <a href="https://t.me/" target="_blank" rel="noreferrer">Telegram</a>
+            <a href="mailto:hello@example.com">Email</a>
+            <a href="https://www.behance.net/" target="_blank" rel="noreferrer">Behance</a>
+            <a href="#">Резюме</a>
+          </nav>
+        </div>
+        <p class="intro">Привет. Я UX/UI дизайнер с опытом в development, healthcare и entertainment продуктах</p>
+      </section>
+
+      <section class="section experience">
+        <h2>Где работал</h2>
+        <div class="experience-list">
+          <article class="experience-item">
+            <div class="experience-text"><div class="labels"><span>Компания</span><span>Должность</span><span>Период</span></div><div><strong>2b agency</strong><span>Ux/ui дизайнер</span><span>апрель 2026 — н.в.</span></div></div>
+            <div class="company-logo logo-2b">2b</div>
+          </article>
+          <article class="experience-item">
+            <div class="experience-text"><div class="labels"><span>Компания</span><span>Должность</span><span>Период</span></div><div><strong>TVOE live</strong><span>дизайнер интерфейсов</span><span>сентябрь — декабрь 2025</span></div></div>
+            <div class="company-logo logo-tvoe">tvoe</div>
+          </article>
+          <article class="experience-item">
+            <div class="experience-text"><div class="labels"><span>Компания</span><span>Должность</span><span>Период</span></div><div><strong>Расцветай</strong><span>Графический дизайнер, Web дизайнер</span><span>2021 — август 2025</span></div></div>
+            <div class="company-logo logo-rassvetay">▥</div>
+          </article>
+        </div>
+      </section>
+
+      {projects.map((project) => (
+        <article class="project section">
+          <div class="project-heading">
+            <div class="title-line">
+              <h2>{project.title}</h2>
+              {project.tags?.map((tag) => <span class:list={['tag', tag === 'успешно' && 'success']}>{tag}</span>)}
+            </div>
+            <p>{project.description}</p>
+            <a class="project-link" href={`/projects/${project.slug}/`}>{project.linkLabel}</a>
+          </div>
+          <a class="preview" href={`/projects/${project.slug}/`} aria-label={`Открыть проект ${project.title}`}>
+            <img src={project.image} alt={`Превью проекта ${project.title}`} loading="lazy" />
+          </a>
+        </article>
+      ))}
+
+      <footer class="footer">
+        <nav class="links" aria-label="Контакты в подвале">
+          <a href="https://t.me/" target="_blank" rel="noreferrer">Telegram</a>
+          <a href="mailto:hello@example.com">Email</a>
+          <a href="https://www.behance.net/" target="_blank" rel="noreferrer">Behance</a>
+          <a href="#">Резюме</a>
+        </nav>
+        <span>2026</span>
+      </footer>
+    </main>
+  </body>
+</html>
