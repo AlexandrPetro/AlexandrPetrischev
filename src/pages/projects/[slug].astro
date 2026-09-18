@@ -10,7 +10,8 @@ const projectMap = {
 };
 
 export function getStaticPaths() {
-  return Object.keys(projectMap).map((slug) => ({ params: { slug } }));
+  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];
+  return slugs.map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
