@@ -9,8 +9,12 @@ const projectMap = {
   rassvetay: { title: 'Расцветай', subtitle: 'Что я делал в Расцветай', text: 'Графический и web-дизайн для девелоперской компании.' },
 };
 
+export function getStaticPaths() {
+  return Object.keys(projectMap).map((slug) => ({ params: { slug } }));
+}
+
 const { slug } = Astro.params;
-const project = projectMap[slug as keyof typeof projectMap] ?? { title: 'Проект', subtitle: 'Описание проекта', text: 'Информация о проекте появится здесь.' };
+const project = projectMap[slug as keyof typeof projectMap];
 ---
 
 <html lang="ru">
