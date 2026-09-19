@@ -2,11 +2,11 @@
 import '../../styles/global.css';
 
 const projectMap = {
-  '2b-agency': { title: '2b agency', subtitle: 'Что я делал в 2b', text: 'Описание проекта и мой вклад в работу над продуктом.' },
-  'yandex-crowd': { title: 'Яндекс крауд', subtitle: 'Посмотреть процесс', text: 'Дизайн лендинга конференции Yandex pet day и мобильный адаптив.' },
-  'tvoe-live': { title: 'Tvoe live', subtitle: 'Моя роль в Tvoe', text: 'Работа над интерфейсами онлайн-кинотеатра.' },
-  uprock: { title: 'Обучение в Uprock', subtitle: 'Проекты, сделанные с Uprock', text: 'Проекты в рамках курса Middle UX/UI designer.' },
-  rassvetay: { title: 'Расцветай', subtitle: 'Что я делал в Расцветай', text: 'Графический и web-дизайн для девелоперской компании.' },
+  '2b-agency': { title: '2b agency', subtitle: 'Моя роль в 2b' },
+  'yandex-crowd': { title: 'Яндекс крауд', subtitle: 'Посмотреть процесс' },
+  'tvoe-live': { title: 'Tvoe live', subtitle: 'Моя роль в Tvoe' },
+  uprock: { title: 'Обучение в Uprock', subtitle: 'Проекты, сделанные с Uprock' },
+  rassvetay: { title: 'Расцветай', subtitle: 'Что я делал в Расцветай' },
 };
 
 export function getStaticPaths() {
@@ -16,6 +16,23 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const project = projectMap[slug as keyof typeof projectMap];
+const assetPath = 'https://www.figma.com/api/mcp/asset/471fbf6b-a964-449a-88f4-f03f221b9477';
+const sourceHome = `${assetPath}/02851.png`;
+const finalHome1 = `${assetPath}/6f0b4.png`;
+const finalHome2 = `${assetPath}/0cb4a.png`;
+const finalHome3 = `${assetPath}/2cb9d.png`;
+const doctorFinal = `${assetPath}/0b767.png`;
+const offersFinal = `${assetPath}/bd6e2.png`;
+const servicesFinal = `${assetPath}/322df.png`;
+const priceFinal = `${assetPath}/410ff.png`;
+const worksFinal = `${assetPath}/a948a.png`;
+const caseFinal = `${assetPath}/0f5aa.png`;
+const agencySource = `${assetPath}/95ebc.png`;
+const agencyHero = `${assetPath}/098d6.png`;
+const agencyCases = `${assetPath}/340f0.png`;
+const agencyFinal1 = `${assetPath}/76124.png`;
+const agencyFinal2 = `${assetPath}/575c9.png`;
+const agencyFinal3 = `${assetPath}/1b67c.png`;
 ---
 
 <html lang="ru">
@@ -26,22 +43,128 @@ const project = projectMap[slug as keyof typeof projectMap];
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="/"><span class="brand-mark"></span><span>User name</span></a>
-      <a href="/" aria-label="Вернуться на главную">←</a>
+      <a class="brand" href={`${import.meta.env.BASE_URL}`}><span class="brand-mark"></span><span>Alexandr Petrischev</span></a>
+      <a href={`${import.meta.env.BASE_URL}`} aria-label="Вернуться на главную">←</a>
     </header>
-    <main class="container">
-      <section class="section project-detail">
-        <h1>{project.title}</h1>
-        <p class="intro">{project.text}</p>
-        <h2>{project.subtitle}</h2>
-        <div class="detail-placeholder">Материалы проекта добавим по макету Figma.</div>
-        <a class="project-link" href="/">← Вернуться к проектам</a>
-      </section>
+
+    <main class="container case-study">
+      {slug === '2b-agency' ? (
+        <>
+          <section class="section case-intro">
+            <div class="hero-shape"></div>
+            <h1>Моя роль в 2b</h1>
+            <p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Основной фокус — продвижение клиник, стоматологий, врачей и медицинских услуг с упором не просто на трафик, а на получение пациентов и бизнес-результат.</p>
+          </section>
+
+          <section class="section facts">
+            <h2>Мои обязанности</h2>
+            <ul>
+              <li>Разработка UX/UI-дизайна сайтов и лендингов для медицинских проектов.</li>
+              <li>Проектирование пользовательских сценариев и прототипов.</li>
+              <li>Создание конверсионных элементов и адаптивных версий.</li>
+              <li>UX-аудит существующих сайтов и подготовка предложений по улучшению.</li>
+              <li>Подготовка макетов и спецификаций для разработчиков.</li>
+              <li>Работа с дизайн-системами и взаимодействие с командой проекта.</li>
+            </ul>
+          </section>
+
+          <section class="section case-section">
+            <h2>Кейс «Немецкий Имплантологический Центр»</h2>
+            <p>Сеть из двух стоматологических клиник премиального сегмента, специализирующаяся на комплексном лечении, имплантации, хирургии и эстетической стоматологии.</p>
+            <h3>Проблема</h3>
+            <p>Устаревший сайт не соответствовал позиционированию клиники и недостаточно передавал экспертность врачей, технологичность и уровень сервиса.</p>
+            <h3>Задача</h3>
+            <p>Создать современный UX/UI сайта, повысить доверие потенциального пациента и выстроить понятный путь к записи на консультацию.</p>
+            <h3>Команда</h3>
+            <p>SEO-специалист, 2 UX/UI-дизайнера, копирайтер и 2 fullstack-разработчика.</p>
+          </section>
+
+          <section class="section case-section">
+            <h2>Процесс: главная страница</h2>
+            <p class="caption">Исходный вариант</p>
+            <img class="case-image source-image" src={sourceHome} alt="Исходный дизайн главной страницы клиники" />
+            <h3>Задачи после анализа</h3>
+            <ul>
+              <li>Пересмотреть информационную архитектуру и структуру разделов.</li>
+              <li>Выстроить сценарии для разных типов пациентов.</li>
+              <li>Переработать навигацию и поиск информации.</li>
+              <li>Показать экспертность врачей, технологии, результаты лечения и отзывы.</li>
+              <li>Продумать CTA, формы записи и адаптивные версии.</li>
+            </ul>
+            <p class="caption">Финальный дизайн</p>
+            <div class="image-stack">
+              <img class="case-image" src={finalHome1} alt="Финальный дизайн главной страницы, часть 1" />
+              <img class="case-image" src={finalHome2} alt="Финальный дизайн главной страницы, часть 2" />
+              <img class="case-image" src={finalHome3} alt="Финальный дизайн главной страницы, часть 3" />
+            </div>
+          </section>
+
+          <section class="section case-section">
+            <h2>Страница врача</h2>
+            <p>Структура страницы была выстроена в соответствии с логикой принятия решения пациентом: сильный первый экран, специализация, опыт, квалификация, направления лечения, отзывы и понятные точки конверсии.</p>
+            <p class="caption">Финальный дизайн</p>
+            <img class="case-image" src={doctorFinal} alt="Финальный дизайн страницы врача" />
+          </section>
+
+          <section class="section case-section">
+            <h2>Акции и услуги</h2>
+            <p>Раздел акций был превращён из простого списка предложений в инструмент привлечения пациентов. Страница услуг должна была дать пользователю понятную карту возможностей клиники и сократить путь до нужного направления лечения.</p>
+            <img class="case-image" src={offersFinal} alt="Финальный дизайн раздела акций" />
+            <img class="case-image" src={servicesFinal} alt="Финальный дизайн страницы услуг" />
+          </section>
+
+          <section class="section case-section">
+            <h2>Цена, выполненные работы и отдельный кейс</h2>
+            <p>Для прайса была пересмотрена структура большого объёма информации, а для портфолио клиники — плотность grid-системы и формат карточек работ.</p>
+            <img class="case-image" src={priceFinal} alt="Финальный дизайн страницы цены" />
+            <img class="case-image" src={worksFinal} alt="Финальный дизайн страницы выполненных работ" />
+            <img class="case-image" src={caseFinal} alt="Финальный дизайн страницы отдельного кейса" />
+          </section>
+
+          <section class="section case-section">
+            <h2>Редизайн главной страницы сайта агентства</h2>
+            <p>Сайт перестал соответствовать текущему бизнесу и тому, как компания хотела себя позиционировать. Мы пересобрали главную страницу так, чтобы она быстро давала потенциальному клиенту представление об агентстве, демонстрировала экспертизу и вела к контакту.</p>
+            <p class="caption">Исходный дизайн</p>
+            <img class="case-image" src={agencySource} alt="Исходный дизайн главной страницы агентства" />
+            <h3>Hero block и кейсы</h3>
+            <img class="case-image" src={agencyHero} alt="Hero block главной страницы агентства" />
+            <img class="case-image" src={agencyCases} alt="Блок кейсов агентства" />
+            <p>Кейсы нужно было переработать с учётом NDA: показать максимально информативную и привлекательную часть опыта, которую компания может демонстрировать публично.</p>
+            <p class="caption">Финальный вариант</p>
+            <div class="image-stack">
+              <img class="case-image" src={agencyFinal1} alt="Финальный дизайн агентства, часть 1" />
+              <img class="case-image" src={agencyFinal2} alt="Финальный дизайн агентства, часть 2" />
+              <img class="case-image" src={agencyFinal3} alt="Финальный дизайн агентства, часть 3" />
+            </div>
+          </section>
+        </>
+      ) : (
+        <section class="section project-detail">
+          <h1>{project.title}</h1>
+          <h2>{project.subtitle}</h2>
+          <div class="detail-placeholder">Материалы этого проекта добавим следующим этапом.</div>
+        </section>
+      )}
+
+      <a class="project-link" href={`${import.meta.env.BASE_URL}`}>← Вернуться к проектам</a>
     </main>
   </body>
 </html>
 
 <style>
-  .project-detail { display: flex; flex-direction: column; gap: 40px; }
+  .case-study { display: flex; flex-direction: column; gap: 40px; }
+  .case-intro, .case-section { display: flex; flex-direction: column; gap: 20px; }
+  .case-intro { gap: 40px; }
+  .case-section h3 { font-size: 16px; font-weight: 600; margin: 20px 0 0; }
+  .case-section p, .case-section li, .facts li { font-size: 16px; line-height: 24px; }
+  .case-section ul, .facts ul { margin: 0; padding-left: 24px; }
+  .caption { font-size: 14px !important; line-height: 24px; }
+  .case-image { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 20px; }
+  .source-image { background: #e3e3e3; padding: 24px; }
+  .image-stack { display: flex; flex-direction: column; gap: 20px; }
   .detail-placeholder { min-height: 400px; background: #f8f8f8; display: grid; place-items: center; text-align: center; padding: 32px; color: rgba(0,0,0,.5); }
+  @media (max-width: 600px) {
+    .case-section p, .case-section li, .facts li { font-size: 15px; line-height: 22px; }
+    .case-image { border-radius: 12px; }
+  }
 </style>
