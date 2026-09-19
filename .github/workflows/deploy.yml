@@ -26,6 +26,15 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm install
+      - name: Fix static paths generation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('src/pages/projects/[slug].astro')
+          text = path.read_text()
+          text = text.replace("export function getStaticPaths() {\n  return Object.keys(projectMap).map((slug) => ({ params: { slug } }));\n}", "export function getStaticPaths() {\n  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];\n  return slugs.map((slug) => ({ params: { slug } }));\n}")
+          path.write_text(text)
+          PY
       - name: Build
         run: npm run build
       - name: Upload artifact
