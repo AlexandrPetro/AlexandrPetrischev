@@ -19,10 +19,16 @@ const project = projectMap[slug as keyof typeof projectMap];
 const assetPath = 'https://www.figma.com/api/mcp/asset/471fbf6b-a964-449a-88f4-f03f221b9477';
 const yandexAssetPath = 'https://www.figma.com/api/mcp/asset/4eab8378-6695-404d-b137-09629b1e94b1';
 const tvoeAssetPath = 'https://www.figma.com/api/mcp/asset/97d7d5f4-c7e1-48aa-ac50-e0f7f23d5bfe';
+const uprockAssetPath = 'https://www.figma.com/api/mcp/asset/bf6ee8e9-d0e0-4b6a-85f5-6df57f85eae6';
 
 const image = (name: string) => `${assetPath}/${name}.png`;
 const yandexImage = (name: string) => `${yandexAssetPath}/${name}.png`;
 const tvoeImage = (name: string) => `${tvoeAssetPath}/${name}.png`;
+const uprockImage = (name: string) => `${uprockAssetPath}/${name}.png`;
+const uprockCorporate = ['0a69c', '9d5d1', 'a206d', 'c8de1'];
+const uprockCorporateMore = ['c5182', 'a8a40', 'e5459', '6d87f', '551d9', '6820b', '17ba1', '0c8fb', '3ba22'];
+const uprockShop = ['8c2b8', '60ead', 'feb16', '85f0c', '5528d', '34695', 'ca87e'];
+const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
 ---
 
 <html lang="ru">
@@ -42,21 +48,29 @@ const tvoeImage = (name: string) => `${tvoeAssetPath}/${name}.png`;
         <>
           <section class="section case-intro"><div class="hero-shape"></div><h1>Моя роль в 2b</h1><p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Я занимался UX/UI-дизайном сайтов и лендингов, прототипированием, UX-аудитами, адаптивами и подготовкой макетов для разработки.</p></section>
           <section class="section case-section"><h2>Кейс «Немецкий Имплантологический Центр»</h2><p>Работал над обновлением сайта клиники: информационной архитектурой, пользовательскими сценариями, страницами врачей, услуг, акций и портфолио.</p><img class="case-image" src={image('02851')} alt="Исходный дизайн сайта клиники" /><div class="image-stack"><img class="case-image" src={image('6f0b4')} alt="Финальный дизайн, часть 1" /><img class="case-image" src={image('0cb4a')} alt="Финальный дизайн, часть 2" /><img class="case-image" src={image('2cb9d')} alt="Финальный дизайн, часть 3" /></div></section>
-          <section class="section case-section"><h2>Дополнительные страницы</h2><img class="case-image" src={image('0b767')} alt="Страница врача" /><img class="case-image" src={image('bd6e2')} alt="Раздел акций" /><img class="case-image" src={image('322df')} alt="Страница услуг" /><img class="case-image" src={image('410ff')} alt="Страница цены" /><img class="case-image" src={image('a948a')} alt="Выполненные работы" /><img class="case-image" src={image('0f5aa')} alt="Отдельный кейс" /></section>
-          <section class="section case-section"><h2>Редизайн сайта агентства</h2><img class="case-image" src={image('95ebc')} alt="Исходный дизайн агентства" /><img class="case-image" src={image('098d6')} alt="Hero block агентства" /><img class="case-image" src={image('340f0')} alt="Блок кейсов агентства" /><div class="image-stack"><img class="case-image" src={image('76124')} alt="Финальный дизайн агентства, часть 1" /><img class="case-image" src={image('575c9')} alt="Финальный дизайн агентства, часть 2" /><img class="case-image" src={image('1b67c')} alt="Финальный дизайн агентства, часть 3" /></div></section>
+          <section class="section case-section"><h2>Дополнительные страницы</h2>{['0b767','bd6e2','322df','410ff','a948a','0f5aa'].map((name) => <img class="case-image" src={image(name)} alt="Страница проекта 2b" />)}</section>
+          <section class="section case-section"><h2>Редизайн сайта агентства</h2>{['95ebc','098d6','340f0','76124','575c9','1b67c'].map((name) => <img class="case-image" src={image(name)} alt="Редизайн сайта агентства" />)}</section>
         </>
       ) : slug === 'yandex-crowd' ? (
         <>
           <section class="section case-intro yandex-intro"><img class="yandex-logo" src={yandexImage('ceb49')} alt="Логотип Яндекса" /><h1>Моё тестовое от яндекс крауда</h1></section>
-          <section class="section case-section"><img class="case-image" src={yandexImage('885f1')} alt="Техническое задание" /><h2>Процесс</h2><p>Анализ экосистемы Яндекса и конкурентов, формулировка концепции, подбор референсов, прототипирование и подготовка финального макета.</p><img class="case-image" src={yandexImage('5c1c0')} alt="Анализ Яндекса" /><img class="case-image" src={yandexImage('c6a39')} alt="Анализ конкурентов" /><img class="case-image" src={yandexImage('9eb52')} alt="Концепция" /><img class="case-image" src={yandexImage('fc9a7')} alt="Референсы" /><img class="case-image" src={yandexImage('89872')} alt="Прототип" /><img class="case-image" src={yandexImage('07b3a')} alt="Финальный макет" /><img class="case-image" src={yandexImage('2a45a')} alt="Мобильная версия" /></section>
+          <section class="section case-section"><img class="case-image" src={yandexImage('885f1')} alt="Техническое задание" /><h2>Процесс</h2><p>Анализ экосистемы Яндекса и конкурентов, формулировка концепции, подбор референсов, прототипирование и подготовка финального макета.</p>{['5c1c0','c6a39','9eb52','fc9a7','89872','07b3a','2a45a'].map((name) => <img class="case-image" src={yandexImage(name)} alt="Этап проекта Яндекс" />)}</section>
         </>
       ) : slug === 'tvoe-live' ? (
         <>
-          <section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={`${tvoeAssetPath}/c412e.svg`} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV, а также предлагает тематические подборки, избранное и синхронизацию прогресса просмотра между устройствами.</p></section>
-          <section class="section case-section"><div class="meta-grid"><div><span>Моя роль</span><strong>Дизайнер интерфейсов</strong></div><div><span>Команда</span><strong>Lead designer, frontend developers (3), backend developers (2), project manager, QA</strong></div><div><span>Дизайн система</span><strong>Была</strong></div></div></section>
-          <section class="section case-section"><h2>Роль в команде</h2><p>Отвечал за развитие и поддержку интерфейсов веб-версии сервиса, участвовал в работе над мобильным и TV-приложениями, развивал компоненты дизайн-системы и обеспечивал адаптивность интерфейсов.</p><p>При ограниченном использовании продуктовой аналитики использовал конкурентный анализ как источник для поиска решений и формирования гипотез.</p></section>
-          <section class="section case-section"><h2>Дизайн-система</h2><p>Поддерживал и дорабатывал существующую дизайн-систему, добавлял новые компоненты и актуализировал их под задачи продукта.</p><div class="image-stack"><img class="case-image" src={tvoeImage('b0c87')} alt="Компоненты дизайн-системы Tvoe" /><img class="case-image" src={tvoeImage('86ec0')} alt="Примеры компонентов Tvoe" /></div></section>
-          <section class="section case-section"><h2>Веб-версия</h2><p>Участвовал в редизайне главной страницы, разработал экраны «Подборки» и отдельной подборки, проработал адаптивы для промежуточных разрешений и скелетон-состояния.</p><p class="caption">Старая версия веб-версии</p><div class="image-stack"><img class="case-image" src={tvoeImage('95388')} alt="Старая версия Tvoe, часть 1" /><img class="case-image" src={tvoeImage('7980a')} alt="Старая версия Tvoe, часть 2" /><img class="case-image" src={tvoeImage('1cede')} alt="Старая версия Tvoe, часть 3" /></div><p class="caption">Редизайн веб-версии</p><p>Добавил блок «Сторис», обновил промо-баннер, добавил коллекции, переработал карточки в жанрах и обновил размеры, отступы и скругления существующих элементов.</p><div class="image-stack"><img class="case-image" src={tvoeImage('0ebba')} alt="Редизайн Tvoe, часть 1" /><img class="case-image" src={tvoeImage('9da5d')} alt="Редизайн Tvoe, часть 2" /><img class="case-image" src={tvoeImage('bba69')} alt="Редизайн Tvoe, часть 3" /><img class="case-image" src={tvoeImage('d7d98')} alt="Редизайн Tvoe, часть 4" /><img class="case-image" src={tvoeImage('04fed')} alt="Редизайн Tvoe, часть 5" /></div></section>
+          <section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={`${tvoeAssetPath}/c412e.svg`} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV.</p></section>
+          <section class="section case-section"><div class="meta-grid"><div><span>Моя роль</span><strong>Дизайнер интерфейсов</strong></div><div><span>Команда</span><strong>Lead designer, frontend developers, backend developers, project manager, QA</strong></div><div><span>Дизайн-система</span><strong>Была</strong></div></div></section>
+          <section class="section case-section"><h2>Роль в команде</h2><p>Отвечал за развитие и поддержку интерфейсов веб-версии сервиса, участвовал в работе над мобильным и TV-приложениями, развивал компоненты дизайн-системы и обеспечивал адаптивность интерфейсов.</p></section>
+          <section class="section case-section"><h2>Дизайн-система</h2><p>Поддерживал и дорабатывал существующую дизайн-систему, добавлял новые компоненты и актуализировал их под задачи продукта.</p>{['b0c87','86ec0'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Компоненты дизайн-системы Tvoe" />)}</section>
+          <section class="section case-section"><h2>Веб-версия</h2><p>Участвовал в редизайне главной страницы, разработал экраны «Подборки» и отдельной подборки, проработал адаптивы и скелетон-состояния.</p>{['95388','7980a','1cede','0ebba','9da5d','bba69','d7d98','04fed'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Экран Tvoe" />)}</section>
+        </>
+      ) : slug === 'uprock' ? (
+        <>
+          <section class="section case-intro uprock-intro"><img class="uprock-logo" src={`${uprockAssetPath}/eb103.svg`} alt="Логотип Uprock" /><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года и было направлено на развитие практических навыков UX/UI-дизайна.</p></section>
+          <section class="section case-section"><div class="meta-grid"><div><span>Длительность</span><strong>1,5 года</strong></div><div><span>Формат</span><strong>Онлайн-обучение с обратной связью, направленное на практические навыки</strong></div><div><span>Модули</span><strong>Корпоративный сайт<br />Интернет-магазин<br />Мобильное приложение</strong></div><div><span>Что входило в программу</span><strong>Исследования пользователей, конкурентный анализ, User Flow, CJM, информационная архитектура, UI-кит, адаптивность, Auto Layout, переменные, стили и токены.</strong></div></div></section>
+          <section class="section case-section"><h2>Корпоративные сайты</h2>{[...uprockCorporate, ...uprockCorporateMore].map((name) => <img class="case-image" src={uprockImage(name)} alt="Корпоративный сайт, проект Uprock" />)}</section>
+          <section class="section case-section"><h2>Интернет-магазин</h2>{uprockShop.map((name) => <img class="case-image" src={uprockImage(name)} alt="Интернет-магазин, проект Uprock" />)}</section>
+          <section class="section case-section"><h2>Мобильное приложение</h2>{uprockMobile.map((name) => <img class="case-image" src={uprockImage(name)} alt="Мобильное приложение, проект Uprock" />)}</section>
         </>
       ) : (
         <section class="section project-detail"><h1>{project.title}</h1><h2>{project.subtitle}</h2><div class="detail-placeholder">Материалы этого проекта добавим следующим этапом.</div></section>
@@ -75,8 +89,8 @@ const tvoeImage = (name: string) => `${tvoeAssetPath}/${name}.png`;
   .caption { font-size: 14px !important; line-height: 24px; color: #808080; }
   .case-image { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 20px; }
   .image-stack { display: flex; flex-direction: column; gap: 20px; }
-  .yandex-intro, .tvoe-intro { align-items: flex-start; }
-  .yandex-logo, .tvoe-logo { width: 110px; height: auto; }
+  .yandex-intro, .tvoe-intro, .uprock-intro { align-items: flex-start; }
+  .yandex-logo, .tvoe-logo, .uprock-logo { width: 110px; height: auto; }
   .meta-grid { display: flex; flex-direction: column; gap: 20px; }
   .meta-grid div { display: flex; flex-direction: column; gap: 8px; }
   .meta-grid span { color: #808080; font-size: 16px; }
