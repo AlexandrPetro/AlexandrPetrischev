@@ -20,11 +20,13 @@ const assetPath = 'https://www.figma.com/api/mcp/asset/471fbf6b-a964-449a-88f4-f
 const yandexAssetPath = 'https://www.figma.com/api/mcp/asset/4eab8378-6695-404d-b137-09629b1e94b1';
 const tvoeAssetPath = 'https://www.figma.com/api/mcp/asset/97d7d5f4-c7e1-48aa-ac50-e0f7f23d5bfe';
 const uprockAssetPath = 'https://www.figma.com/api/mcp/asset/bf6ee8e9-d0e0-4b6a-85f5-6df57f85eae6';
+const rassvetayAssetPath = 'https://www.figma.com/api/mcp/asset/63a0eff5-6770-4c84-a52e-5e74dbe1b7e6';
 
 const image = (name: string) => `${assetPath}/${name}.png`;
 const yandexImage = (name: string) => `${yandexAssetPath}/${name}.png`;
 const tvoeImage = (name: string) => `${tvoeAssetPath}/${name}.png`;
 const uprockImage = (name: string) => `${uprockAssetPath}/${name}.png`;
+const rassvetayImage = (name: string) => `${rassvetayAssetPath}/${name}.png`;
 const uprockCorporate = ['0a69c', '9d5d1', 'a206d', 'c8de1'];
 const uprockCorporateMore = ['c5182', 'a8a40', 'e5459', '6d87f', '551d9', '6820b', '17ba1', '0c8fb', '3ba22'];
 const uprockShop = ['8c2b8', '60ead', 'feb16', '85f0c', '5528d', '34695', 'ca87e'];
@@ -72,6 +74,15 @@ const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
           <section class="section case-section"><h2>Интернет-магазин</h2>{uprockShop.map((name) => <img class="case-image" src={uprockImage(name)} alt="Интернет-магазин, проект Uprock" />)}</section>
           <section class="section case-section"><h2>Мобильное приложение</h2>{uprockMobile.map((name) => <img class="case-image" src={uprockImage(name)} alt="Мобильное приложение, проект Uprock" />)}</section>
         </>
+      ) : slug === 'rassvetay' ? (
+        <>
+          <section class="section case-intro rassvetay-intro"><img class="rassvetay-logo" src={`${rassvetayAssetPath}/d3b05.svg`} alt="Логотип Расцветай" /><h1>Что я делал в Расцветай</h1><p class="intro">Группа компаний «Расцветай» — девелоперская компания из Новосибирска, специализирующаяся на строительстве жилой и коммерческой недвижимости. Компания входит в число крупнейших застройщиков Новосибирской области, а также реализует проекты в нескольких регионах России.</p><p class="intro">По данным ЕРЗ.РФ на ноябрь 2025 года, компания занимала первое место в Новосибирской области по объёму текущего строительства.</p></section>
+          <section class="section case-section"><h2>Мои обязанности</h2><ul><li>Дизайн рекламных материалов</li><li>Разработка и поддержка фирменного стиля</li><li>Дизайн социальных сетей</li><li>Дизайн материалов для офисов продаж</li><li>Печатная и полиграфическая продукция</li><li>Дизайн сайта</li><li>Взаимодействие с отделами компании</li><li>Подготовка материалов для мероприятий и PR</li><li>Работа с визуальными материалами проектов</li><li>Работа с подрядчиками и производством</li></ul></section>
+          <section class="section case-section"><h2>Рекламные материалы</h2>{['e0ce5','a9a84'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Рекламные материалы Расцветай" />)}</section>
+          <section class="section case-section"><h2>Проект «Лофт-наука»</h2>{['67862','451a4'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Проект Лофт-наука" />)}</section>
+          <section class="section case-section"><h2>Концепт ребрендинга</h2><img class="case-image" src={rassvetayImage('92ade')} alt="Концепт ребрендинга Расцветай" /></section>
+          <section class="section case-section"><h2>Редизайн сайта</h2><p class="caption">Исходный вариант</p><img class="case-image" src={rassvetayImage('899a0')} alt="Исходный вариант сайта Расцветай" /><p class="caption">Редизайн</p>{['071a0','b1edf','67604','ca4d2','19f07'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Редизайн сайта Расцветай" />)}</section>
+        </>
       ) : (
         <section class="section project-detail"><h1>{project.title}</h1><h2>{project.subtitle}</h2><div class="detail-placeholder">Материалы этого проекта добавим следующим этапом.</div></section>
       )}
@@ -89,12 +100,13 @@ const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
   .caption { font-size: 14px !important; line-height: 24px; color: #808080; }
   .case-image { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 20px; }
   .image-stack { display: flex; flex-direction: column; gap: 20px; }
-  .yandex-intro, .tvoe-intro, .uprock-intro { align-items: flex-start; }
-  .yandex-logo, .tvoe-logo, .uprock-logo { width: 110px; height: auto; }
+  .yandex-intro, .tvoe-intro, .uprock-intro, .rassvetay-intro { align-items: flex-start; }
+  .yandex-logo, .tvoe-logo, .uprock-logo, .rassvetay-logo { width: 110px; height: auto; }
   .meta-grid { display: flex; flex-direction: column; gap: 20px; }
   .meta-grid div { display: flex; flex-direction: column; gap: 8px; }
   .meta-grid span { color: #808080; font-size: 16px; }
   .meta-grid strong { font-size: 20px; font-weight: 400; line-height: 24px; }
+  .case-section ul { margin: 0; padding-left: 24px; }
   .detail-placeholder { min-height: 400px; background: #f8f8f8; display: grid; place-items: center; text-align: center; padding: 32px; color: rgba(0,0,0,.5); }
-  @media (max-width: 600px) { .case-section p { font-size: 15px; line-height: 22px; } .case-image { border-radius: 12px; } .meta-grid strong { font-size: 17px; } }
+  @media (max-width: 600px) { .case-section p, .case-section li { font-size: 15px; line-height: 22px; } .case-image { border-radius: 12px; } .meta-grid strong { font-size: 17px; } }
 </style>
