@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 
+const base = import.meta.env.BASE_URL;
 const assetPathPrefix = 'https://www.figma.com/api/mcp/asset/a8e180fc-e4ab-4dbc-a349-a53d9bd19670';
 
 const projects = [
@@ -52,7 +53,7 @@ const projects = [
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="На главную">
+      <a class="brand" href={base} aria-label="На главную">
         <span class="brand-mark"></span>
         <span>Alexandr Petrischev</span>
       </a>
@@ -105,9 +106,9 @@ const projects = [
               {project.tags?.map((tag) => <span class:list={['tag', tag === 'успешно' && 'success']}>{tag}</span>)}
             </div>
             <p>{project.description}</p>
-            <a class="project-link" href={`/projects/${project.slug}/`}>{project.linkLabel}</a>
+            <a class="project-link" href={`${base}projects/${project.slug}/`}>{project.linkLabel}</a>
           </div>
-          <a class="preview" href={`/projects/${project.slug}/`} aria-label={`Открыть проект ${project.title}`}>
+          <a class="preview" href={`${base}projects/${project.slug}/`} aria-label={`Открыть проект ${project.title}`}>
             <img src={project.image} alt={`Превью проекта ${project.title}`} loading="lazy" />
           </a>
         </article>
