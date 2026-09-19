@@ -10,41 +10,19 @@ const projectMap = {
 };
 
 export function getStaticPaths() {
-  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];
-  return slugs.map((slug) => ({ params: { slug } }));
+  return Object.keys(projectMap).map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
 const project = projectMap[slug as keyof typeof projectMap];
 
 const assetPath = 'https://www.figma.com/api/mcp/asset/471fbf6b-a964-449a-88f4-f03f221b9477';
-const sourceHome = `${assetPath}/02851.png`;
-const finalHome1 = `${assetPath}/6f0b4.png`;
-const finalHome2 = `${assetPath}/0cb4a.png`;
-const finalHome3 = `${assetPath}/2cb9d.png`;
-const doctorFinal = `${assetPath}/0b767.png`;
-const offersFinal = `${assetPath}/bd6e2.png`;
-const servicesFinal = `${assetPath}/322df.png`;
-const priceFinal = `${assetPath}/410ff.png`;
-const worksFinal = `${assetPath}/a948a.png`;
-const caseFinal = `${assetPath}/0f5aa.png`;
-const agencySource = `${assetPath}/95ebc.png`;
-const agencyHero = `${assetPath}/098d6.png`;
-const agencyCases = `${assetPath}/340f0.png`;
-const agencyFinal1 = `${assetPath}/76124.png`;
-const agencyFinal2 = `${assetPath}/575c9.png`;
-const agencyFinal3 = `${assetPath}/1b67c.png`;
-
 const yandexAssetPath = 'https://www.figma.com/api/mcp/asset/4eab8378-6695-404d-b137-09629b1e94b1';
-const yandexLogo = `${yandexAssetPath}/ceb49.png`;
-const yandexBrief = `${yandexAssetPath}/885f1.png`;
-const yandexAnalysis = `${yandexAssetPath}/5c1c0.png`;
-const yandexCompetitors = `${yandexAssetPath}/c6a39.png`;
-const yandexConcept = `${yandexAssetPath}/9eb52.png`;
-const yandexReferences = `${yandexAssetPath}/fc9a7.png`;
-const yandexPrototype = `${yandexAssetPath}/89872.png`;
-const yandexFinalDesktop = `${yandexAssetPath}/07b3a.png`;
-const yandexFinalMobile = `${yandexAssetPath}/2a45a.png`;
+const tvoeAssetPath = 'https://www.figma.com/api/mcp/asset/97d7d5f4-c7e1-48aa-ac50-e0f7f23d5bfe';
+
+const image = (name: string) => `${assetPath}/${name}.png`;
+const yandexImage = (name: string) => `${yandexAssetPath}/${name}.png`;
+const tvoeImage = (name: string) => `${tvoeAssetPath}/${name}.png`;
 ---
 
 <html lang="ru">
@@ -62,113 +40,26 @@ const yandexFinalMobile = `${yandexAssetPath}/2a45a.png`;
     <main class="container case-study">
       {slug === '2b-agency' ? (
         <>
-          <section class="section case-intro">
-            <div class="hero-shape"></div>
-            <h1>Моя роль в 2b</h1>
-            <p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Основной фокус — продвижение клиник, стоматологий, врачей и медицинских услуг с упором не просто на трафик, а на получение пациентов и бизнес-результат.</p>
-          </section>
-          <section class="section facts">
-            <h2>Мои обязанности</h2>
-            <ul>
-              <li>Разработка UX/UI-дизайна сайтов и лендингов для медицинских проектов.</li>
-              <li>Проектирование пользовательских сценариев и прототипов.</li>
-              <li>Создание конверсионных элементов и адаптивных версий.</li>
-              <li>UX-аудит существующих сайтов и подготовка предложений по улучшению.</li>
-              <li>Подготовка макетов и спецификаций для разработчиков.</li>
-              <li>Работа с дизайн-системами и взаимодействие с командой проекта.</li>
-            </ul>
-          </section>
-          <section class="section case-section">
-            <h2>Кейс «Немецкий Имплантологический Центр»</h2>
-            <p>Сеть из двух стоматологических клиник премиального сегмента, специализирующаяся на комплексном лечении, имплантации, хирургии и эстетической стоматологии.</p>
-            <h3>Проблема</h3>
-            <p>Устаревший сайт не соответствовал позиционированию клиники и недостаточно передавал экспертность врачей, технологичность и уровень сервиса.</p>
-            <h3>Задача</h3>
-            <p>Создать современный UX/UI сайта, повысить доверие потенциального пациента и выстроить понятный путь к записи на консультацию.</p>
-            <h3>Команда</h3>
-            <p>SEO-специалист, 2 UX/UI-дизайнера, копирайтер и 2 fullstack-разработчика.</p>
-          </section>
-          <section class="section case-section">
-            <h2>Процесс: главная страница</h2>
-            <p class="caption">Исходный вариант</p>
-            <img class="case-image source-image" src={sourceHome} alt="Исходный дизайн главной страницы клиники" />
-            <h3>Задачи после анализа</h3>
-            <ul>
-              <li>Пересмотреть информационную архитектуру и структуру разделов.</li>
-              <li>Выстроить сценарии для разных типов пациентов.</li>
-              <li>Переработать навигацию и поиск информации.</li>
-              <li>Показать экспертность врачей, технологии, результаты лечения и отзывы.</li>
-              <li>Продумать CTA, формы записи и адаптивные версии.</li>
-            </ul>
-            <p class="caption">Финальный дизайн</p>
-            <div class="image-stack"><img class="case-image" src={finalHome1} alt="Финальный дизайн главной страницы, часть 1" /><img class="case-image" src={finalHome2} alt="Финальный дизайн главной страницы, часть 2" /><img class="case-image" src={finalHome3} alt="Финальный дизайн главной страницы, часть 3" /></div>
-          </section>
-          <section class="section case-section">
-            <h2>Страница врача</h2>
-            <p>Структура страницы была выстроена в соответствии с логикой принятия решения пациентом: сильный первый экран, специализация, опыт, квалификация, направления лечения, отзывы и понятные точки конверсии.</p>
-            <p class="caption">Финальный дизайн</p>
-            <img class="case-image" src={doctorFinal} alt="Финальный дизайн страницы врача" />
-          </section>
-          <section class="section case-section">
-            <h2>Акции и услуги</h2>
-            <p>Раздел акций был превращён из простого списка предложений в инструмент привлечения пациентов. Страница услуг должна была дать пользователю понятную карту возможностей клиники и сократить путь до нужного направления лечения.</p>
-            <img class="case-image" src={offersFinal} alt="Финальный дизайн раздела акций" /><img class="case-image" src={servicesFinal} alt="Финальный дизайн страницы услуг" />
-          </section>
-          <section class="section case-section">
-            <h2>Цена, выполненные работы и отдельный кейс</h2>
-            <p>Для прайса была пересмотрена структура большого объёма информации, а для портфолио клиники — плотность grid-системы и формат карточек работ.</p>
-            <img class="case-image" src={priceFinal} alt="Финальный дизайн страницы цены" /><img class="case-image" src={worksFinal} alt="Финальный дизайн страницы выполненных работ" /><img class="case-image" src={caseFinal} alt="Финальный дизайн страницы отдельного кейса" />
-          </section>
-          <section class="section case-section">
-            <h2>Редизайн главной страницы сайта агентства</h2>
-            <p>Сайт перестал соответствовать текущему бизнесу и тому, как компания хотела себя позиционировать. Мы пересобрали главную страницу так, чтобы она быстро давала потенциальному клиенту представление об агентстве, демонстрировала экспертизу и вела к контакту.</p>
-            <p class="caption">Исходный дизайн</p><img class="case-image" src={agencySource} alt="Исходный дизайн главной страницы агентства" />
-            <h3>Hero block и кейсы</h3><img class="case-image" src={agencyHero} alt="Hero block главной страницы агентства" /><img class="case-image" src={agencyCases} alt="Блок кейсов агентства" />
-            <p>Кейсы нужно было переработать с учётом NDA: показать максимально информативную и привлекательную часть опыта, которую компания может демонстрировать публично.</p>
-            <p class="caption">Финальный вариант</p><div class="image-stack"><img class="case-image" src={agencyFinal1} alt="Финальный дизайн агентства, часть 1" /><img class="case-image" src={agencyFinal2} alt="Финальный дизайн агентства, часть 2" /><img class="case-image" src={agencyFinal3} alt="Финальный дизайн агентства, часть 3" /></div>
-          </section>
+          <section class="section case-intro"><div class="hero-shape"></div><h1>Моя роль в 2b</h1><p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Я занимался UX/UI-дизайном сайтов и лендингов, прототипированием, UX-аудитами, адаптивами и подготовкой макетов для разработки.</p></section>
+          <section class="section case-section"><h2>Кейс «Немецкий Имплантологический Центр»</h2><p>Работал над обновлением сайта клиники: информационной архитектурой, пользовательскими сценариями, страницами врачей, услуг, акций и портфолио.</p><img class="case-image" src={image('02851')} alt="Исходный дизайн сайта клиники" /><div class="image-stack"><img class="case-image" src={image('6f0b4')} alt="Финальный дизайн, часть 1" /><img class="case-image" src={image('0cb4a')} alt="Финальный дизайн, часть 2" /><img class="case-image" src={image('2cb9d')} alt="Финальный дизайн, часть 3" /></div></section>
+          <section class="section case-section"><h2>Дополнительные страницы</h2><img class="case-image" src={image('0b767')} alt="Страница врача" /><img class="case-image" src={image('bd6e2')} alt="Раздел акций" /><img class="case-image" src={image('322df')} alt="Страница услуг" /><img class="case-image" src={image('410ff')} alt="Страница цены" /><img class="case-image" src={image('a948a')} alt="Выполненные работы" /><img class="case-image" src={image('0f5aa')} alt="Отдельный кейс" /></section>
+          <section class="section case-section"><h2>Редизайн сайта агентства</h2><img class="case-image" src={image('95ebc')} alt="Исходный дизайн агентства" /><img class="case-image" src={image('098d6')} alt="Hero block агентства" /><img class="case-image" src={image('340f0')} alt="Блок кейсов агентства" /><div class="image-stack"><img class="case-image" src={image('76124')} alt="Финальный дизайн агентства, часть 1" /><img class="case-image" src={image('575c9')} alt="Финальный дизайн агентства, часть 2" /><img class="case-image" src={image('1b67c')} alt="Финальный дизайн агентства, часть 3" /></div></section>
         </>
       ) : slug === 'yandex-crowd' ? (
         <>
-          <section class="section case-intro yandex-intro">
-            <img class="yandex-logo" src={yandexLogo} alt="Логотип Яндекса" />
-            <h1>Моё тестовое от яндекс крауда</h1>
-          </section>
-
-          <section class="section case-section">
-            <img class="case-image" src={yandexBrief} alt="Техническое задание для веб-дизайнера" />
-          </section>
-
-          <section class="section case-section">
-            <h2>Процесс я поделил на этапы:</h2>
-            <ol><li>Анализ сайтов-сервисов и мероприятий Яндекса</li></ol>
-            <img class="case-image" src={yandexAnalysis} alt="Анализ сайтов и сервисов Яндекса" />
-            <p class="result-label">Вывод</p>
-            <p>В сайтах-сервисах Яндекса используется привычный для экосистемы плашечный интерфейсный дизайн. Для стилизации применяются 3D, изометрия и гласоморфизм. Иллюстрации максимально просто и прямо дополняют смысл: диаграммы, иконки и графики. В сайтах, посвящённых событиям, используется больше креативных объектов, пиксельной графики, ярких плашек, размытия и паттернов. Поэтому для event-мероприятия допустимо и необходимо добавить больше креатива и уникальной стилизации.</p>
-          </section>
-
-          <section class="section case-section">
-            <ol start="2"><li>Анализ конкурентов</li></ol>
-            <img class="case-image" src={yandexCompetitors} alt="Анализ сайтов конкурентов" />
-            <p class="result-label">Вывод</p>
-            <p>В сайтах мероприятий используются яркая стилистика, крупная типографика в заголовках, контрастные акцентные цвета, нестандартная сетка и смыслообразующий декор. Такой дизайн помогает привлечь внимание к мероприятию, срок жизни которого обычно ограничен.</p>
-          </section>
-
-          <section class="section case-section"><ol start="3"><li>Формулировка концепции</li></ol><img class="case-image" src={yandexConcept} alt="Формулировка концепции" /></section>
-          <section class="section case-section"><ol start="4"><li>Подбор референсов</li></ol><img class="case-image" src={yandexReferences} alt="Подбор референсов" /></section>
-          <section class="section case-section"><ol start="5"><li>Прототип</li></ol><img class="case-image" src={yandexPrototype} alt="Прототип страницы" /></section>
-          <section class="section case-section">
-            <ol start="6"><li>Финальный макет</li></ol>
-            <div class="image-stack"><img class="case-image" src={yandexFinalDesktop} alt="Финальный макет сайта, десктопная версия" /><img class="case-image" src={yandexFinalMobile} alt="Финальный макет сайта, мобильная версия" /></div>
-            <p>Ссылка на макет в Figma: <a href="https://www.figma.com/design/LsYXnAJ9tJNeRr2gf5OT29/%D1%81%D0%B0%D0%B9%D1%82?node-id=109-2089" target="_blank" rel="noreferrer">открыть макет</a></p>
-          </section>
+          <section class="section case-intro yandex-intro"><img class="yandex-logo" src={yandexImage('ceb49')} alt="Логотип Яндекса" /><h1>Моё тестовое от яндекс крауда</h1></section>
+          <section class="section case-section"><img class="case-image" src={yandexImage('885f1')} alt="Техническое задание" /><h2>Процесс</h2><p>Анализ экосистемы Яндекса и конкурентов, формулировка концепции, подбор референсов, прототипирование и подготовка финального макета.</p><img class="case-image" src={yandexImage('5c1c0')} alt="Анализ Яндекса" /><img class="case-image" src={yandexImage('c6a39')} alt="Анализ конкурентов" /><img class="case-image" src={yandexImage('9eb52')} alt="Концепция" /><img class="case-image" src={yandexImage('fc9a7')} alt="Референсы" /><img class="case-image" src={yandexImage('89872')} alt="Прототип" /><img class="case-image" src={yandexImage('07b3a')} alt="Финальный макет" /><img class="case-image" src={yandexImage('2a45a')} alt="Мобильная версия" /></section>
+        </>
+      ) : slug === 'tvoe-live' ? (
+        <>
+          <section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={`${tvoeAssetPath}/c412e.svg`} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV, а также предлагает тематические подборки, избранное и синхронизацию прогресса просмотра между устройствами.</p></section>
+          <section class="section case-section"><div class="meta-grid"><div><span>Моя роль</span><strong>Дизайнер интерфейсов</strong></div><div><span>Команда</span><strong>Lead designer, frontend developers (3), backend developers (2), project manager, QA</strong></div><div><span>Дизайн система</span><strong>Была</strong></div></div></section>
+          <section class="section case-section"><h2>Роль в команде</h2><p>Отвечал за развитие и поддержку интерфейсов веб-версии сервиса, участвовал в работе над мобильным и TV-приложениями, развивал компоненты дизайн-системы и обеспечивал адаптивность интерфейсов.</p><p>При ограниченном использовании продуктовой аналитики использовал конкурентный анализ как источник для поиска решений и формирования гипотез.</p></section>
+          <section class="section case-section"><h2>Дизайн-система</h2><p>Поддерживал и дорабатывал существующую дизайн-систему, добавлял новые компоненты и актуализировал их под задачи продукта.</p><div class="image-stack"><img class="case-image" src={tvoeImage('b0c87')} alt="Компоненты дизайн-системы Tvoe" /><img class="case-image" src={tvoeImage('86ec0')} alt="Примеры компонентов Tvoe" /></div></section>
+          <section class="section case-section"><h2>Веб-версия</h2><p>Участвовал в редизайне главной страницы, разработал экраны «Подборки» и отдельной подборки, проработал адаптивы для промежуточных разрешений и скелетон-состояния.</p><p class="caption">Старая версия веб-версии</p><div class="image-stack"><img class="case-image" src={tvoeImage('95388')} alt="Старая версия Tvoe, часть 1" /><img class="case-image" src={tvoeImage('7980a')} alt="Старая версия Tvoe, часть 2" /><img class="case-image" src={tvoeImage('1cede')} alt="Старая версия Tvoe, часть 3" /></div><p class="caption">Редизайн веб-версии</p><p>Добавил блок «Сторис», обновил промо-баннер, добавил коллекции, переработал карточки в жанрах и обновил размеры, отступы и скругления существующих элементов.</p><div class="image-stack"><img class="case-image" src={tvoeImage('0ebba')} alt="Редизайн Tvoe, часть 1" /><img class="case-image" src={tvoeImage('9da5d')} alt="Редизайн Tvoe, часть 2" /><img class="case-image" src={tvoeImage('bba69')} alt="Редизайн Tvoe, часть 3" /><img class="case-image" src={tvoeImage('d7d98')} alt="Редизайн Tvoe, часть 4" /><img class="case-image" src={tvoeImage('04fed')} alt="Редизайн Tvoe, часть 5" /></div></section>
         </>
       ) : (
-        <section class="section project-detail">
-          <h1>{project.title}</h1>
-          <h2>{project.subtitle}</h2>
-          <div class="detail-placeholder">Материалы этого проекта добавим следующим этапом.</div>
-        </section>
+        <section class="section project-detail"><h1>{project.title}</h1><h2>{project.subtitle}</h2><div class="detail-placeholder">Материалы этого проекта добавим следующим этапом.</div></section>
       )}
 
       <a class="project-link" href={`${import.meta.env.BASE_URL}`}>← Вернуться к проектам</a>
@@ -180,19 +71,16 @@ const yandexFinalMobile = `${yandexAssetPath}/2a45a.png`;
   .case-study { display: flex; flex-direction: column; gap: 40px; }
   .case-intro, .case-section { display: flex; flex-direction: column; gap: 20px; }
   .case-intro { gap: 40px; }
-  .case-section h3 { font-size: 16px; font-weight: 600; margin: 20px 0 0; }
-  .case-section p, .case-section li, .facts li { font-size: 16px; line-height: 24px; }
-  .case-section ol, .case-section ul, .facts ul { margin: 0; padding-left: 24px; }
-  .caption { font-size: 14px !important; line-height: 24px; }
-  .result-label { color: #34c759; margin-bottom: -8px; }
+  .case-section p, .case-section li { font-size: 16px; line-height: 24px; }
+  .caption { font-size: 14px !important; line-height: 24px; color: #808080; }
   .case-image { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 20px; }
-  .source-image { background: #e3e3e3; padding: 24px; }
   .image-stack { display: flex; flex-direction: column; gap: 20px; }
-  .yandex-intro { align-items: flex-start; }
-  .yandex-logo { width: 110px; height: auto; }
+  .yandex-intro, .tvoe-intro { align-items: flex-start; }
+  .yandex-logo, .tvoe-logo { width: 110px; height: auto; }
+  .meta-grid { display: flex; flex-direction: column; gap: 20px; }
+  .meta-grid div { display: flex; flex-direction: column; gap: 8px; }
+  .meta-grid span { color: #808080; font-size: 16px; }
+  .meta-grid strong { font-size: 20px; font-weight: 400; line-height: 24px; }
   .detail-placeholder { min-height: 400px; background: #f8f8f8; display: grid; place-items: center; text-align: center; padding: 32px; color: rgba(0,0,0,.5); }
-  @media (max-width: 600px) {
-    .case-section p, .case-section li, .facts li { font-size: 15px; line-height: 22px; }
-    .case-image { border-radius: 12px; }
-  }
+  @media (max-width: 600px) { .case-section p { font-size: 15px; line-height: 22px; } .case-image { border-radius: 12px; } .meta-grid strong { font-size: 17px; } }
 </style>
