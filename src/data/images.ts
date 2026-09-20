@@ -62,7 +62,7 @@ export const imageSources = {
 
 // Здесь указываются локальные изображения. Пока список пустой,
 // сайт продолжает использовать изображения из Figma.
-// Ключ — старый ID изображения, значение — путь в папке public.
+// Ключ — старый ID изображения без расширения.
 export const localImages: Record<string, Record<string, string>> = {
   'tvoe-live': {
     // '95388': 'images/tvoe/main-screen.png',
@@ -92,6 +92,5 @@ export function imageUrl(base: string, file: string) {
 }
 
 export function pngUrl(base: string, file: string) {
-  return imageUrl(base, `${file}.png`)
-    .replace(`${base}/${file}.png`, localAsset(base, file) ?? `${base}/${file}.png`);
+  return localAsset(base, file) ?? `${base}/${file}.png`;
 }
