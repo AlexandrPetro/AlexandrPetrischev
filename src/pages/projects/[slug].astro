@@ -1,5 +1,6 @@
 ---
 import '../../styles/global.css';
+import { imageSources, pngUrl, imageUrl } from '../../data/images';
 
 const projectMap = {
   '2b-agency': { title: '2b agency', subtitle: 'Моя роль в 2b' },
@@ -16,21 +17,19 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const project = projectMap[slug as keyof typeof projectMap];
 
-const assetPath = 'https://www.figma.com/api/mcp/asset/471fbf6b-a964-449a-88f4-f03f221b9477';
-const yandexAssetPath = 'https://www.figma.com/api/mcp/asset/4eab8378-6695-404d-b137-09629b1e94b1';
-const tvoeAssetPath = 'https://www.figma.com/api/mcp/asset/97d7d5f4-c7e1-48aa-ac50-e0f7f23d5bfe';
-const uprockAssetPath = 'https://www.figma.com/api/mcp/asset/bf6ee8e9-d0e0-4b6a-85f5-6df57f85eae6';
-const rassvetayAssetPath = 'https://www.figma.com/api/mcp/asset/63a0eff5-6770-4c84-a52e-5e74dbe1b7e6';
+const image = (name: string) => pngUrl(imageSources['2b-agency'].base, name);
+const yandexImage = (name: string) => pngUrl(imageSources['yandex-crowd'].base, name);
+const tvoeImage = (name: string) => pngUrl(imageSources['tvoe-live'].base, name);
+const uprockImage = (name: string) => pngUrl(imageSources.uprock.base, name);
+const rassvetayImage = (name: string) => pngUrl(imageSources.rassvetay.base, name);
+const tvoeLogo = imageUrl(imageSources['tvoe-live'].base, imageSources['tvoe-live'].files.logo);
+const uprockLogo = imageUrl(imageSources.uprock.base, imageSources.uprock.files.logo);
+const rassvetayLogo = imageUrl(imageSources.rassvetay.base, imageSources.rassvetay.files.logo);
 
-const image = (name: string) => `${assetPath}/${name}.png`;
-const yandexImage = (name: string) => `${yandexAssetPath}/${name}.png`;
-const tvoeImage = (name: string) => `${tvoeAssetPath}/${name}.png`;
-const uprockImage = (name: string) => `${uprockAssetPath}/${name}.png`;
-const rassvetayImage = (name: string) => `${rassvetayAssetPath}/${name}.png`;
-const uprockCorporate = ['0a69c', '9d5d1', 'a206d', 'c8de1'];
-const uprockCorporateMore = ['c5182', 'a8a40', 'e5459', '6d87f', '551d9', '6820b', '17ba1', '0c8fb', '3ba22'];
-const uprockShop = ['8c2b8', '60ead', 'feb16', '85f0c', '5528d', '34695', 'ca87e'];
-const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
+const uprockCorporate = imageSources.uprock.files.corporate.slice(0, 4);
+const uprockCorporateMore = imageSources.uprock.files.corporate.slice(4);
+const uprockShop = imageSources.uprock.files.shop;
+const uprockMobile = imageSources.uprock.files.mobile;
 ---
 
 <html lang="ru">
@@ -60,7 +59,7 @@ const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
         </>
       ) : slug === 'tvoe-live' ? (
         <>
-          <section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={`${tvoeAssetPath}/c412e.svg`} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV.</p></section>
+          <section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={tvoeLogo} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV.</p></section>
           <section class="section case-section"><div class="meta-grid"><div><span>Моя роль</span><strong>Дизайнер интерфейсов</strong></div><div><span>Команда</span><strong>Lead designer, frontend developers, backend developers, project manager, QA</strong></div><div><span>Дизайн-система</span><strong>Была</strong></div></div></section>
           <section class="section case-section"><h2>Роль в команде</h2><p>Отвечал за развитие и поддержку интерфейсов веб-версии сервиса, участвовал в работе над мобильным и TV-приложениями, развивал компоненты дизайн-системы и обеспечивал адаптивность интерфейсов.</p></section>
           <section class="section case-section"><h2>Дизайн-система</h2><p>Поддерживал и дорабатывал существующую дизайн-систему, добавлял новые компоненты и актуализировал их под задачи продукта.</p>{['b0c87','86ec0'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Компоненты дизайн-системы Tvoe" />)}</section>
@@ -68,7 +67,7 @@ const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
         </>
       ) : slug === 'uprock' ? (
         <>
-          <section class="section case-intro uprock-intro"><img class="uprock-logo" src={`${uprockAssetPath}/eb103.svg`} alt="Логотип Uprock" /><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года и было направлено на развитие практических навыков UX/UI-дизайна.</p></section>
+          <section class="section case-intro uprock-intro"><img class="uprock-logo" src={uprockLogo} alt="Логотип Uprock" /><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года и было направлено на развитие практических навыков UX/UI-дизайна.</p></section>
           <section class="section case-section"><div class="meta-grid"><div><span>Длительность</span><strong>1,5 года</strong></div><div><span>Формат</span><strong>Онлайн-обучение с обратной связью, направленное на практические навыки</strong></div><div><span>Модули</span><strong>Корпоративный сайт<br />Интернет-магазин<br />Мобильное приложение</strong></div><div><span>Что входило в программу</span><strong>Исследования пользователей, конкурентный анализ, User Flow, CJM, информационная архитектура, UI-кит, адаптивность, Auto Layout, переменные, стили и токены.</strong></div></div></section>
           <section class="section case-section"><h2>Корпоративные сайты</h2>{[...uprockCorporate, ...uprockCorporateMore].map((name) => <img class="case-image" src={uprockImage(name)} alt="Корпоративный сайт, проект Uprock" />)}</section>
           <section class="section case-section"><h2>Интернет-магазин</h2>{uprockShop.map((name) => <img class="case-image" src={uprockImage(name)} alt="Интернет-магазин, проект Uprock" />)}</section>
@@ -76,7 +75,7 @@ const uprockMobile = ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'];
         </>
       ) : slug === 'rassvetay' ? (
         <>
-          <section class="section case-intro rassvetay-intro"><img class="rassvetay-logo" src={`${rassvetayAssetPath}/d3b05.svg`} alt="Логотип Расцветай" /><h1>Что я делал в Расцветай</h1><p class="intro">Группа компаний «Расцветай» — девелоперская компания из Новосибирска, специализирующаяся на строительстве жилой и коммерческой недвижимости. Компания входит в число крупнейших застройщиков Новосибирской области, а также реализует проекты в нескольких регионах России.</p><p class="intro">По данным ЕРЗ.РФ на ноябрь 2025 года, компания занимала первое место в Новосибирской области по объёму текущего строительства.</p></section>
+          <section class="section case-intro rassvetay-intro"><img class="rassvetay-logo" src={rassvetayLogo} alt="Логотип Расцветай" /><h1>Что я делал в Расцветай</h1><p class="intro">Группа компаний «Расцветай» — девелоперская компания из Новосибирска, специализирующаяся на строительстве жилой и коммерческой недвижимости. Компания входит в число крупнейших застройщиков Новосибирской области, а также реализует проекты в нескольких регионах России.</p><p class="intro">По данным ЕРЗ.РФ на ноябрь 2025 года, компания занимала первое место в Новосибирской области по объёму текущего строительства.</p></section>
           <section class="section case-section"><h2>Мои обязанности</h2><ul><li>Дизайн рекламных материалов</li><li>Разработка и поддержка фирменного стиля</li><li>Дизайн социальных сетей</li><li>Дизайн материалов для офисов продаж</li><li>Печатная и полиграфическая продукция</li><li>Дизайн сайта</li><li>Взаимодействие с отделами компании</li><li>Подготовка материалов для мероприятий и PR</li><li>Работа с визуальными материалами проектов</li><li>Работа с подрядчиками и производством</li></ul></section>
           <section class="section case-section"><h2>Рекламные материалы</h2>{['e0ce5','a9a84'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Рекламные материалы Расцветай" />)}</section>
           <section class="section case-section"><h2>Проект «Лофт-наука»</h2>{['67862','451a4'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Проект Лофт-наука" />)}</section>
