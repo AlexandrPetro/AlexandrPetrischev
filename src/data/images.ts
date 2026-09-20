@@ -1,5 +1,16 @@
 // Все изображения сайта собраны в одном месте.
-// Чтобы заменить картинку, измени только значение в этом файле.
+//
+// Как заменить изображение:
+// 1. Загрузи файл в GitHub в папку public/images/<проект>/.
+// 2. В localImages ниже добавь соответствие: старый ID -> путь к новому файлу.
+// 3. Сохрани изменения. Сайт автоматически соберётся заново.
+//
+// Пример:
+// 'tvoe-live': {
+//   '95388': 'images/tvoe/main-screen.png',
+// },
+//
+// Путь указывается относительно папки public.
 
 export const imageSources = {
   '2b-agency': {
@@ -49,10 +60,38 @@ export const imageSources = {
   },
 } as const;
 
+// Здесь указываются локальные изображения. Пока список пустой,
+// сайт продолжает использовать изображения из Figma.
+// Ключ — старый ID изображения, значение — путь в папке public.
+export const localImages: Record<string, Record<string, string>> = {
+  'tvoe-live': {
+    // '95388': 'images/tvoe/main-screen.png',
+  },
+  '2b-agency': {},
+  'yandex-crowd': {},
+  uprock: {},
+  rassvetay: {},
+};
+
+const projectByBase: Record<string, string> = Object.fromEntries(
+  Object.entries(imageSources).map(([project, source]) => [source.base, project]),
+);
+
+function localAsset(base: string, file: string) {
+  const project = projectByBase[base];
+  const localPath = project ? localImages[project]?.[file] : undefined;
+
+  if (!localPath) return null;
+
+  const siteBase = import.meta.env.BASE_URL || '/';
+  return `${siteBase.replace(/\/$/, '')}/${localPath.replace(/^\//, '')}`;
+}
+
 export function imageUrl(base: string, file: string) {
-  return `${base}/${file}`;
+  return localAsset(base, file) ?? `${base}/${file}`;
 }
 
 export function pngUrl(base: string, file: string) {
-  return imageUrl(base, `${file}.png`);
+  return imageUrl(base, `${file}.png`)
+    .replace(`${base}/${file}.png`, localAsset(base, file) ?? `${base}/${file}.png`);
 }
