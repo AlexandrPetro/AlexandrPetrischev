@@ -1,6 +1,6 @@
 ---
 import '../../styles/global.css';
-import { imageSources, pngUrl, imageUrl } from '../../data/images';
+import { imageSources, localImages, pngUrl, imageUrl } from '../../data/images';
 
 const projectMap = {
   '2b-agency': { title: '2b agency', subtitle: 'Моя роль в 2b' },
@@ -16,6 +16,7 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const project = projectMap[slug as keyof typeof projectMap];
+const base = import.meta.env.BASE_URL;
 
 const image = (name: string) => pngUrl(imageSources['2b-agency'].base, name);
 const yandexImage = (name: string) => pngUrl(imageSources['yandex-crowd'].base, name);
@@ -25,9 +26,8 @@ const rassvetayImage = (name: string) => pngUrl(imageSources.rassvetay.base, nam
 const tvoeLogo = imageUrl(imageSources['tvoe-live'].base, imageSources['tvoe-live'].files.logo);
 const uprockLogo = imageUrl(imageSources.uprock.base, imageSources.uprock.files.logo);
 const rassvetayLogo = imageUrl(imageSources.rassvetay.base, imageSources.rassvetay.files.logo);
-
-const uprockCorporate = imageSources.uprock.files.corporate.slice(0, 4);
-const uprockCorporateMore = imageSources.uprock.files.corporate.slice(4);
+const local2b = (key: string) => localImages['2b-agency']?.[key] ? `${base}${localImages['2b-agency'][key]}` : null;
+const uprockCorporate = imageSources.uprock.files.corporate;
 const uprockShop = imageSources.uprock.files.shop;
 const uprockMobile = imageSources.uprock.files.mobile;
 ---
@@ -40,53 +40,37 @@ const uprockMobile = imageSources.uprock.files.mobile;
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href={`${import.meta.env.BASE_URL}`}><span class="brand-mark"></span><span>Alexandr Petrischev</span></a>
-      <a href={`${import.meta.env.BASE_URL}`} aria-label="Вернуться на главную">←</a>
+      <a class="brand" href={base}><span class="brand-mark"></span><span>Alexandr Petrischev</span></a>
+      <a href={base} aria-label="Вернуться на главную">←</a>
     </header>
 
     <main class="container case-study">
       {slug === '2b-agency' ? (
         <>
-          <section class="section case-intro"><div class="hero-shape"></div><h1>Моя роль в 2b</h1><p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Я занимался UX/UI-дизайном сайтов и лендингов, прототипированием, UX-аудитами, адаптивами и подготовкой макетов для разработки.</p></section>
-          <section class="section case-section"><h2>Кейс «Немецкий Имплантологический Центр»</h2><p>Работал над обновлением сайта клиники: информационной архитектурой, пользовательскими сценариями, страницами врачей, услуг, акций и портфолио.</p><img class="case-image" src={base}images/main/Main_before.png alt="Исходный дизайн сайта клиники" /><div class="image-stack"><img class="case-image" src={image('6f0b4')} alt="Финальный дизайн, часть 1" /><img class="case-image" src={image('0cb4a')} alt="Финальный дизайн, часть 2" /><img class="case-image" src={image('2cb9d')} alt="Финальный дизайн, часть 3" /></div></section>
-          <section class="section case-section"><h2>Дополнительные страницы</h2>{['0b767','bd6e2','322df','410ff','a948a','0f5aa'].map((name) => <img class="case-image" src={image(name)} alt="Страница проекта 2b" />)}</section>
-          <section class="section case-section"><h2>Редизайн сайта агентства</h2>{['95ebc','098d6','340f0','76124','575c9','1b67c'].map((name) => <img class="case-image" src={image(name)} alt="Редизайн сайта агентства" />)}</section>
+          <section class="section case-intro"><div class="hero-shape"></div><h1>Моя роль в 2b</h1><p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Основной фокус — продвижение клиник, стоматологий, врачей и медицинских услуг с упором на получение пациентов и бизнес-результат.</p></section>
+          <section class="section case-section"><h2>Мои обязанности</h2><ul><li>Разработка UX/UI-дизайна сайтов и лендингов для медицинских клиник и медицинских проектов.</li><li>Проектирование пользовательских сценариев.</li><li>Создание прототипов сайтов и отдельных страниц.</li><li>Дизайн конверсионных элементов.</li><li>Адаптация дизайна под desktop, tablet и mobile.</li><li>Проведение UX-аудитов и подготовка предложений по улучшению.</li><li>Подготовка макетов и спецификаций для разработчиков, контроль реализации дизайна.</li><li>Работа с дизайн-системами.</li><li>Взаимодействие с SEO-специалистами, маркетологами, копирайтерами, разработчиками и менеджерами.</li></ul></section>
+          <nav class="case-nav"><a href="#nic">Кейс «Немецкий Имплантологический Центр»</a><a href="#agency">Главная страница сайта агентства</a></nav>
+          <section class="section case-section" id="nic"><h2>Кейс «Немецкий Имплантологический Центр»</h2><p>Сеть из двух стоматологических клиник премиального сегмента, специализирующаяся на комплексном лечении, имплантации, хирургии и эстетической стоматологии.</p><div class="text-block"><h3>Проблема</h3><p>Устаревший сайт не соответствовал текущему уровню и позиционированию клиники. Интерфейс недостаточно передавал экспертность врачей, технологичность и высокий уровень сервиса.</p><h3>Задача</h3><p>Создать современный UX/UI сайта, повысить доверие потенциального пациента и превратить посещение сайта в понятный путь к записи на консультацию.</p><h3>Команда</h3><p>SEO-специалист, 2 UX/UI-дизайнера, копирайтер, 2 fullstack-разработчика.</p></div><h3>Процесс</h3><p class="caption">Исходный сайт</p><div class="placeholder" style="--placeholder-height:187px">{local2b('main_before_1') && <img src={local2b('main_before_1')!} alt="Исходный сайт, экран 1" />}</div><div class="placeholder" style="--placeholder-height:164px">{local2b('main_before_2') && <img src={local2b('main_before_2')!} alt="Исходный сайт, экран 2" />}</div><div class="placeholder" style="--placeholder-height:164px">{local2b('main_before_3') && <img src={local2b('main_before_3')!} alt="Исходный сайт, экран 3" />}</div><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:1263px">{local2b('nic_main') && <img src={local2b('nic_main')!} alt="Финальный дизайн главной страницы" />}</div></section>
+          <section class="section case-section"><h2>Страница врача</h2><p>Структура страницы выстроена в соответствии с логикой принятия решения пациента: фотография и специализация врача, экспертиза, образование, опыт, направления лечения, кейсы, отзывы и понятные точки конверсии.</p><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:642px">{local2b('nic_doctorpage') && <img src={local2b('nic_doctorpage')!} alt="Страница врача" />}</div></section>
+          <section class="section case-section"><h2>Страница «акции»</h2><p>Раздел акций был переработан из простого списка предложений в инструмент привлечения пациентов. Условия, выгоды и целевое действие получили более понятную структуру.</p><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:666px">{local2b('nic_action_1') && <img src={local2b('nic_action_1')!} alt="Страница акций 1" />}</div><div class="placeholder" style="--placeholder-height:666px">{local2b('nic_action_2') && <img src={local2b('nic_action_2')!} alt="Страница акций 2" />}</div></section>
+          <section class="section case-section"><h2>Страница «услуги»</h2><p>Создана понятная карта возможностей клиники, чтобы сократить путь пользователя до нужной услуги.</p><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:547px">{local2b('nic_service') && <img src={local2b('nic_service')!} alt="Страница услуг" />}</div></section>
+          <section class="section case-section"><h2>Страница «цены»</h2><p>Ценовая информация распределена по понятным категориям, добавлены востребованные услуги, акции и удобное раскрытие подкатегорий.</p><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:450px">{local2b('nic_price') && <img src={local2b('nic_price')!} alt="Страница цен" />}</div></section>
+          <section class="section case-section"><h2>Страница «наши работы»</h2><p>Переработана grid-система: увеличена плотность размещения контента, сокращена площадь одного кейса и созданы компактные информативные карточки.</p><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:404px">{local2b('nic_allcase') && <img src={local2b('nic_allcase')!} alt="Страница выполненных работ" />}</div></section>
+          <section class="section case-section"><h2>Страница выполненного кейса</h2><p>Страница отдельного кейса должна демонстрировать результат работы клиники, раскрывать процесс лечения и последовательно подводить пользователя к целевому действию.</p><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:523px">{local2b('nic_case') && <img src={local2b('nic_case')!} alt="Страница кейса" />}</div></section>
+          <section class="section case-section"><h2>Мобильная версия</h2><div class="placeholder" style="--placeholder-height:523px">{local2b('nic_mobile') && <img src={local2b('nic_mobile')!} alt="Мобильная версия" />}</div></section>
+          <section class="section case-section"><h2>UI kit</h2><div class="placeholder" style="--placeholder-height:335px">{local2b('nic_uikit_1') && <img src={local2b('nic_uikit_1')!} alt="UI kit, часть 1" />}</div><div class="placeholder" style="--placeholder-height:379px">{local2b('nic_uikit_2') && <img src={local2b('nic_uikit_2')!} alt="UI kit, часть 2" />}</div><p>В рамках проекта была разработана единая UI-система, объединившая типографику, цвета, сетки, кнопки, формы, карточки, навигацию и другие компоненты.</p></section>
+          <section class="section case-section" id="agency"><h2>Редизайн главной страницы сайта агентства</h2><p>Основная проблема заключалась в том, что сайт перестал соответствовать текущему бизнесу и позиционированию компании. Мы пересобрали главную страницу так, чтобы она быстро давала потенциальному клиенту целостное представление об агентстве, демонстрировала экспертизу и вела к контакту.</p><p class="caption">Исходный дизайн</p><div class="placeholder" style="--placeholder-height:833px">{local2b('2b_before') && <img src={local2b('2b_before')!} alt="Исходный дизайн сайта агентства" />}</div><h3>Hero block</h3><div class="placeholder" style="--placeholder-height:405px">{local2b('2b_hero') && <img src={local2b('2b_hero')!} alt="Hero block" />}</div><div class="placeholder" style="--placeholder-height:410px">{local2b('2b_hero_open') && <img src={local2b('2b_hero_open')!} alt="Раскрытый hero block" />}</div><h3>Кейсы</h3><div class="placeholder" style="--placeholder-height:760px">{local2b('2b_case') && <img src={local2b('2b_case')!} alt="Блок кейсов" />}</div><h3>Финальный вариант</h3><div class="placeholder" style="--placeholder-height:748px">{local2b('2b_allpage') && <img src={local2b('2b_allpage')!} alt="Финальная страница агентства" />}</div><h3>Мобильная версия</h3><div class="placeholder" style="--placeholder-height:748px">{local2b('2b_mobile') && <img src={local2b('2b_mobile')!} alt="Мобильная версия сайта агентства" />}</div></section>
         </>
       ) : slug === 'yandex-crowd' ? (
-        <>
-          <section class="section case-intro yandex-intro"><img class="yandex-logo" src={yandexImage('ceb49')} alt="Логотип Яндекса" /><h1>Моё тестовое от яндекс крауда</h1></section>
-          <section class="section case-section"><img class="case-image" src={yandexImage('885f1')} alt="Техническое задание" /><h2>Процесс</h2><p>Анализ экосистемы Яндекса и конкурентов, формулировка концепции, подбор референсов, прототипирование и подготовка финального макета.</p>{['5c1c0','c6a39','9eb52','fc9a7','89872','07b3a','2a45a'].map((name) => <img class="case-image" src={yandexImage(name)} alt="Этап проекта Яндекс" />)}</section>
-        </>
+        <><section class="section case-intro yandex-intro"><img class="yandex-logo" src={yandexImage('ceb49')} alt="Логотип Яндекса" /><h1>Моё тестовое от яндекс крауда</h1></section><section class="section case-section"><img class="case-image" src={yandexImage('885f1')} alt="Техническое задание" /><h2>Процесс</h2><p>Анализ экосистемы Яндекса и конкурентов, формулировка концепции, подбор референсов, прототипирование и подготовка финального макета.</p>{['5c1c0','c6a39','9eb52','fc9a7','89872','07b3a','2a45a'].map((name) => <img class="case-image" src={yandexImage(name)} alt="Этап проекта Яндекс" />)}</section></>
       ) : slug === 'tvoe-live' ? (
-        <>
-          <section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={tvoeLogo} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV.</p></section>
-          <section class="section case-section"><div class="meta-grid"><div><span>Моя роль</span><strong>Дизайнер интерфейсов</strong></div><div><span>Команда</span><strong>Lead designer, frontend developers, backend developers, project manager, QA</strong></div><div><span>Дизайн-система</span><strong>Была</strong></div></div></section>
-          <section class="section case-section"><h2>Роль в команде</h2><p>Отвечал за развитие и поддержку интерфейсов веб-версии сервиса, участвовал в работе над мобильным и TV-приложениями, развивал компоненты дизайн-системы и обеспечивал адаптивность интерфейсов.</p></section>
-          <section class="section case-section"><h2>Дизайн-система</h2><p>Поддерживал и дорабатывал существующую дизайн-систему, добавлял новые компоненты и актуализировал их под задачи продукта.</p>{['b0c87','86ec0'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Компоненты дизайн-системы Tvoe" />)}</section>
-          <section class="section case-section"><h2>Веб-версия</h2><p>Участвовал в редизайне главной страницы, разработал экраны «Подборки» и отдельной подборки, проработал адаптивы и скелетон-состояния.</p>{['95388','7980a','1cede','0ebba','9da5d','bba69','d7d98','04fed'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Экран Tvoe" />)}</section>
-        </>
+        <><section class="section case-intro tvoe-intro"><img class="tvoe-logo" src={tvoeLogo} alt="Логотип Tvoe" /><h1>Задачи в Tvoe</h1><p class="intro">TVOE — мультплатформенный онлайн-кинотеатр, работающий по модели подписочного сервиса. Сервис доступен на веб-сайте, мобильных устройствах и Smart TV.</p></section><section class="section case-section"><div class="meta-grid"><div><span>Моя роль</span><strong>Дизайнер интерфейсов</strong></div><div><span>Команда</span><strong>Lead designer, frontend developers, backend developers, project manager, QA</strong></div><div><span>Дизайн-система</span><strong>Была</strong></div></div></section><section class="section case-section"><h2>Роль в команде</h2><p>Отвечал за развитие и поддержку интерфейсов веб-версии сервиса, участвовал в работе над мобильным и TV-приложениями, развивал компоненты дизайн-системы и обеспечивал адаптивность интерфейсов.</p></section><section class="section case-section"><h2>Дизайн-система</h2><p>Поддерживал и дорабатывал существующую дизайн-систему, добавлял новые компоненты и актуализировал их под задачи продукта.</p>{['b0c87','86ec0'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Компоненты дизайн-системы Tvoe" />)}</section><section class="section case-section"><h2>Веб-версия</h2><p>Участвовал в редизайне главной страницы, разработал экраны «Подборки» и отдельной подборки, проработал адаптивы и скелетон-состояния.</p>{['95388','7980a','1cede','0ebba','9da5d','bba69','d7d98','04fed'].map((name) => <img class="case-image" src={tvoeImage(name)} alt="Экран Tvoe" />)}</section></>
       ) : slug === 'uprock' ? (
-        <>
-          <section class="section case-intro uprock-intro"><img class="uprock-logo" src={uprockLogo} alt="Логотип Uprock" /><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года и было направлено на развитие практических навыков UX/UI-дизайна.</p></section>
-          <section class="section case-section"><div class="meta-grid"><div><span>Длительность</span><strong>1,5 года</strong></div><div><span>Формат</span><strong>Онлайн-обучение с обратной связью, направленное на практические навыки</strong></div><div><span>Модули</span><strong>Корпоративный сайт<br />Интернет-магазин<br />Мобильное приложение</strong></div><div><span>Что входило в программу</span><strong>Исследования пользователей, конкурентный анализ, User Flow, CJM, информационная архитектура, UI-кит, адаптивность, Auto Layout, переменные, стили и токены.</strong></div></div></section>
-          <section class="section case-section"><h2>Корпоративные сайты</h2>{[...uprockCorporate, ...uprockCorporateMore].map((name) => <img class="case-image" src={uprockImage(name)} alt="Корпоративный сайт, проект Uprock" />)}</section>
-          <section class="section case-section"><h2>Интернет-магазин</h2>{uprockShop.map((name) => <img class="case-image" src={uprockImage(name)} alt="Интернет-магазин, проект Uprock" />)}</section>
-          <section class="section case-section"><h2>Мобильное приложение</h2>{uprockMobile.map((name) => <img class="case-image" src={uprockImage(name)} alt="Мобильное приложение, проект Uprock" />)}</section>
-        </>
+        <><section class="section case-intro uprock-intro"><img class="uprock-logo" src={uprockLogo} alt="Логотип Uprock" /><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года и было направлено на развитие практических навыков UX/UI-дизайна.</p></section><section class="section case-section"><div class="meta-grid"><div><span>Длительность</span><strong>1,5 года</strong></div><div><span>Формат</span><strong>Онлайн-обучение с обратной связью</strong></div><div><span>Модули</span><strong>Корпоративный сайт<br />Интернет-магазин<br />Мобильное приложение</strong></div></div></section><section class="section case-section"><h2>Корпоративные сайты</h2>{uprockCorporate.map((name) => <img class="case-image" src={uprockImage(name)} alt="Корпоративный сайт, проект Uprock" />)}</section><section class="section case-section"><h2>Интернет-магазин</h2>{uprockShop.map((name) => <img class="case-image" src={uprockImage(name)} alt="Интернет-магазин, проект Uprock" />)}</section><section class="section case-section"><h2>Мобильное приложение</h2>{uprockMobile.map((name) => <img class="case-image" src={uprockImage(name)} alt="Мобильное приложение, проект Uprock" />)}</section></>
       ) : slug === 'rassvetay' ? (
-        <>
-          <section class="section case-intro rassvetay-intro"><img class="rassvetay-logo" src={rassvetayLogo} alt="Логотип Расцветай" /><h1>Что я делал в Расцветай</h1><p class="intro">Группа компаний «Расцветай» — девелоперская компания из Новосибирска, специализирующаяся на строительстве жилой и коммерческой недвижимости. Компания входит в число крупнейших застройщиков Новосибирской области, а также реализует проекты в нескольких регионах России.</p><p class="intro">По данным ЕРЗ.РФ на ноябрь 2025 года, компания занимала первое место в Новосибирской области по объёму текущего строительства.</p></section>
-          <section class="section case-section"><h2>Мои обязанности</h2><ul><li>Дизайн рекламных материалов</li><li>Разработка и поддержка фирменного стиля</li><li>Дизайн социальных сетей</li><li>Дизайн материалов для офисов продаж</li><li>Печатная и полиграфическая продукция</li><li>Дизайн сайта</li><li>Взаимодействие с отделами компании</li><li>Подготовка материалов для мероприятий и PR</li><li>Работа с визуальными материалами проектов</li><li>Работа с подрядчиками и производством</li></ul></section>
-          <section class="section case-section"><h2>Рекламные материалы</h2>{['e0ce5','a9a84'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Рекламные материалы Расцветай" />)}</section>
-          <section class="section case-section"><h2>Проект «Лофт-наука»</h2>{['67862','451a4'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Проект Лофт-наука" />)}</section>
-          <section class="section case-section"><h2>Концепт ребрендинга</h2><img class="case-image" src={rassvetayImage('92ade')} alt="Концепт ребрендинга Расцветай" /></section>
-          <section class="section case-section"><h2>Редизайн сайта</h2><p class="caption">Исходный вариант</p><img class="case-image" src={rassvetayImage('899a0')} alt="Исходный вариант сайта Расцветай" /><p class="caption">Редизайн</p>{['071a0','b1edf','67604','ca4d2','19f07'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Редизайн сайта Расцветай" />)}</section>
-        </>
-      ) : (
-        <section class="section project-detail"><h1>{project.title}</h1><h2>{project.subtitle}</h2><div class="detail-placeholder">Материалы этого проекта добавим следующим этапом.</div></section>
-      )}
-
-      <a class="project-link" href={`${import.meta.env.BASE_URL}`}>← Вернуться к проектам</a>
+        <><section class="section case-intro rassvetay-intro"><img class="rassvetay-logo" src={rassvetayLogo} alt="Логотип Расцветай" /><h1>Что я делал в Расцветай</h1><p class="intro">Группа компаний «Расцветай» — девелоперская компания из Новосибирска, специализирующаяся на строительстве жилой и коммерческой недвижимости.</p><p class="intro">По данным ЕРЗ.РФ на ноябрь 2025 года, компания занимала первое место в Новосибирской области по объёму текущего строительства.</p></section><section class="section case-section"><h2>Мои обязанности</h2><ul><li>Дизайн рекламных материалов</li><li>Разработка и поддержка фирменного стиля</li><li>Дизайн социальных сетей</li><li>Дизайн материалов для офисов продаж</li><li>Печатная и полиграфическая продукция</li><li>Дизайн сайта</li><li>Взаимодействие с отделами компании</li></ul></section><section class="section case-section"><h2>Рекламные материалы</h2>{['e0ce5','a9a84'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Рекламные материалы Расцветай" />)}</section><section class="section case-section"><h2>Проект «Лофт-наука»</h2>{['67862','451a4'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Проект Лофт-наука" />)}</section><section class="section case-section"><h2>Концепт ребрендинга</h2><img class="case-image" src={rassvetayImage('92ade')} alt="Концепт ребрендинга Расцветай" /></section><section class="section case-section"><h2>Редизайн сайта</h2><p class="caption">Исходный вариант</p><img class="case-image" src={rassvetayImage('899a0')} alt="Исходный вариант сайта Расцветай" /><p class="caption">Редизайн</p>{['071a0','b1edf','67604','ca4d2','19f07'].map((name) => <img class="case-image" src={rassvetayImage(name)} alt="Редизайн сайта Расцветай" />)}</section></>
+      ) : null}
+      <a class="project-link" href={base}>← Вернуться к проектам</a>
     </main>
   </body>
 </html>
@@ -96,16 +80,19 @@ const uprockMobile = imageSources.uprock.files.mobile;
   .case-intro, .case-section { display: flex; flex-direction: column; gap: 20px; }
   .case-intro { gap: 40px; }
   .case-section p, .case-section li { font-size: 16px; line-height: 24px; }
+  .case-section ul { margin: 0; padding-left: 24px; display: grid; gap: 8px; }
+  .case-nav { display: flex; flex-wrap: wrap; gap: 24px 40px; font-size: 14px; }
+  .case-nav a, .project-link { text-decoration: underline; text-underline-offset: 3px; }
+  .text-block { display: flex; flex-direction: column; gap: 16px; }
+  .text-block h3, .case-section h3 { margin: 0; font-size: 16px; font-weight: 600; }
   .caption { font-size: 14px !important; line-height: 24px; color: #808080; }
   .case-image { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 20px; }
-  .image-stack { display: flex; flex-direction: column; gap: 20px; }
-  .yandex-intro, .tvoe-intro, .uprock-intro, .rassvetay-intro { align-items: flex-start; }
-  .yandex-logo, .tvoe-logo, .uprock-logo, .rassvetay-logo { width: 110px; height: auto; }
-  .meta-grid { display: flex; flex-direction: column; gap: 20px; }
-  .meta-grid div { display: flex; flex-direction: column; gap: 8px; }
-  .meta-grid span { color: #808080; font-size: 16px; }
-  .meta-grid strong { font-size: 20px; font-weight: 400; line-height: 24px; }
-  .case-section ul { margin: 0; padding-left: 24px; }
-  .detail-placeholder { min-height: 400px; background: #f8f8f8; display: grid; place-items: center; text-align: center; padding: 32px; color: rgba(0,0,0,.5); }
-  @media (max-width: 600px) { .case-section p, .case-section li { font-size: 15px; line-height: 22px; } .case-image { border-radius: 12px; } .meta-grid strong { font-size: 17px; } }
+  .placeholder { width: 100%; height: var(--placeholder-height); background: #e3e3e3; border-radius: 0; overflow: hidden; }
+  .placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .yandex-logo, .tvoe-logo, .uprock-logo, .rassvetay-logo { max-width: 180px; max-height: 110px; object-fit: contain; object-position: left center; }
+  .uprock-intro, .rassvetay-intro, .tvoe-intro { gap: 24px; }
+  .meta-grid { display: grid; gap: 20px; }
+  .meta-grid > div { display: grid; grid-template-columns: 140px 1fr; gap: 20px; font-size: 16px; line-height: 24px; }
+  .meta-grid span { color: #808080; }
+  @media (max-width: 600px) { .meta-grid > div { grid-template-columns: 1fr; gap: 4px; } .placeholder { height: auto !important; aspect-ratio: 800 / 450; } }
 </style>
