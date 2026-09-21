@@ -47,7 +47,7 @@ const uprockMobile = imageSources.uprock.files.mobile;
     <main class="container case-study">
       {slug === '2b-agency' ? (
         <>
-          <section class="section case-intro"><div class="hero-shape"></div><h1>Моя роль в 2b</h1><p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Основной фокус — продвижение клиник, стоматологий, врачей и медицинских услуг с упором на получение пациентов и бизнес-результат.</p></section>
+          <section class="section case-intro"><img class="two-b-logo" src={`${base}images/main/2b_logo.png`} alt="Логотип 2b agency" /><h1>Моя роль в 2b</h1><p class="intro">2b agency — digital-агентство полного цикла в сфере медицинского маркетинга. Основной фокус — продвижение клиник, стоматологий, врачей и медицинских услуг с упором на получение пациентов и бизнес-результат.</p></section>
           <section class="section case-section"><h2>Мои обязанности</h2><ul><li>Разработка UX/UI-дизайна сайтов и лендингов для медицинских клиник и медицинских проектов.</li><li>Проектирование пользовательских сценариев.</li><li>Создание прототипов сайтов и отдельных страниц.</li><li>Дизайн конверсионных элементов.</li><li>Адаптация дизайна под desktop, tablet и mobile.</li><li>Проведение UX-аудитов и подготовка предложений по улучшению.</li><li>Подготовка макетов и спецификаций для разработчиков, контроль реализации дизайна.</li><li>Работа с дизайн-системами.</li><li>Взаимодействие с SEO-специалистами, маркетологами, копирайтерами, разработчиками и менеджерами.</li></ul></section>
           <nav class="case-nav"><a href="#nic">Кейс «Немецкий Имплантологический Центр»</a><a href="#agency">Главная страница сайта агентства</a></nav>
           <section class="section case-section" id="nic"><h2>Кейс «Немецкий Имплантологический Центр»</h2><p>Сеть из двух стоматологических клиник премиального сегмента, специализирующаяся на комплексном лечении, имплантации, хирургии и эстетической стоматологии.</p><div class="text-block"><h3>Проблема</h3><p>Устаревший сайт не соответствовал текущему уровню и позиционированию клиники. Интерфейс недостаточно передавал экспертность врачей, технологичность и высокий уровень сервиса.</p><h3>Задача</h3><p>Создать современный UX/UI сайта, повысить доверие потенциального пациента и превратить посещение сайта в понятный путь к записи на консультацию.</p><h3>Команда</h3><p>SEO-специалист, 2 UX/UI-дизайнера, копирайтер, 2 fullstack-разработчика.</p></div><h3>Процесс</h3><p class="caption">Исходный сайт</p><div class="placeholder" style="--placeholder-height:187px">{local2b('main_before_1') && <img src={local2b('main_before_1')!} alt="Исходный сайт, экран 1" />}</div><div class="placeholder" style="--placeholder-height:164px">{local2b('main_before_2') && <img src={local2b('main_before_2')!} alt="Исходный сайт, экран 2" />}</div><div class="placeholder" style="--placeholder-height:164px">{local2b('main_before_3') && <img src={local2b('main_before_3')!} alt="Исходный сайт, экран 3" />}</div><p class="caption">Финальный дизайн</p><div class="placeholder" style="--placeholder-height:1263px">{local2b('nic_main') && <img src={local2b('nic_main')!} alt="Финальный дизайн главной страницы" />}</div></section>
@@ -79,6 +79,7 @@ const uprockMobile = imageSources.uprock.files.mobile;
   .case-study { display: flex; flex-direction: column; gap: 40px; }
   .case-intro, .case-section { display: flex; flex-direction: column; gap: 20px; }
   .case-intro { gap: 40px; }
+  .two-b-logo { width: 110px; height: 110px; object-fit: contain; object-position: left center; }
   .case-section p, .case-section li { font-size: 16px; line-height: 24px; }
   .case-section ul { margin: 0; padding-left: 24px; display: grid; gap: 8px; }
   .case-nav { display: flex; flex-wrap: wrap; gap: 24px 40px; font-size: 14px; }
@@ -87,7 +88,7 @@ const uprockMobile = imageSources.uprock.files.mobile;
   .text-block h3, .case-section h3 { margin: 0; font-size: 16px; font-weight: 600; }
   .caption { font-size: 14px !important; line-height: 24px; color: #808080; }
   .case-image { width: 100%; height: auto; display: block; border: 1px solid #e3e3e3; border-radius: 20px; }
-  .placeholder { width: 100%; height: var(--placeholder-height); background: #e3e3e3; border-radius: 0; overflow: hidden; }
+  .placeholder { width: 100%; height: var(--placeholder-height); background: #e3e3e3; overflow: hidden; }
   .placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .yandex-logo, .tvoe-logo, .uprock-logo, .rassvetay-logo { max-width: 180px; max-height: 110px; object-fit: contain; object-position: left center; }
   .uprock-intro, .rassvetay-intro, .tvoe-intro { gap: 24px; }
