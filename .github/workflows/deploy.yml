@@ -35,13 +35,9 @@ jobs:
           path = Path('src/pages/projects/[slug].astro')
           text = path.read_text()
 
-          text = re.sub(
-              r"export function getStaticPaths\(\)\s*\{.*?\}",
-              "export function getStaticPaths() {\n  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];\n  return slugs.map((slug) => ({ params: { slug } }));\n}",
-              text,
-              count=1,
-              flags=re.S,
-          )
+          old_paths = "export function getStaticPaths() { return Object.keys(projectMap).map((slug) => ({ params: { slug } })); }"
+          new_paths = "export function getStaticPaths() {\n  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];\n  return slugs.map((slug) => ({ params: { slug } }));\n}"
+          text = text.replace(old_paths, new_paths)
 
           text = re.sub(
               r"const project = projectMap\[.*?\];",
