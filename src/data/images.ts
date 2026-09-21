@@ -39,7 +39,7 @@ export const imageSources = {
 // или исходное изображение из Figma — в зависимости от блока.
 export const localImages: Record<string, Record<string, string>> = {
   '2b-agency': {
-    // 'main_before_1': 'images/2b/main-before-1.png',
+    'main_before_1': 'public/images/main/NIC_old1.png',
     // 'main_before_2': 'images/2b/main-before-2.png',
     // 'main_before_3': 'images/2b/main-before-3.png',
     // 'nic_main': 'images/2b/nic-main.png',
