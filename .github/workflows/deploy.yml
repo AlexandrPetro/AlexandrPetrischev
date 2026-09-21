@@ -30,10 +30,36 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
+
           path = Path('src/pages/projects/[slug].astro')
           text = path.read_text()
-          text = text.replace("export function getStaticPaths() {\n  return Object.keys(projectMap).map((slug) => ({ params: { slug } }));\n}", "export function getStaticPaths() {\n  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];\n  return slugs.map((slug) => ({ params: { slug } }));\n}")
-          text = text.replace("const project = projectMap[slug as keyof typeof projectMap];", "const project = projectMap[slug || '2b-agency'];")
+
+          text = text.replace(
+              "const project = projectMap[slug as keyof typeof projectMap];",
+              "const project = projectMap[slug || '2b-agency'];"
+          )
+
+          text = re.sub(
+              r"const img = .*?;\n---",
+              '''const img = (key: string, alt: string, height: number, rounded = false) => {
+            const source = local2b(key);
+            const className = `placeholder ${rounded ? 'rounded' : ''}`;
+            const image = source ? `<img src="${source}" alt="${alt}" />` : '';
+            return `<div class="${className}" style="--placeholder-height:${height}px">${image}</div>`;
+          };
+          ---''',
+              text,
+              count=1,
+              flags=re.S,
+          )
+
+          text = re.sub(
+              r"\{img\(([^{}\n]*)\)\}",
+              r"<Fragment set:html={img(\1)} />",
+              text,
+          )
+
           path.write_text(text)
           PY
       - name: Build
