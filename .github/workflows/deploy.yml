@@ -35,9 +35,19 @@ jobs:
           path = Path('src/pages/projects/[slug].astro')
           text = path.read_text()
 
-          text = text.replace(
-              "const project = projectMap[slug as keyof typeof projectMap];",
-              "const project = projectMap[slug || '2b-agency'];"
+          text = re.sub(
+              r"export function getStaticPaths\(\)\s*\{.*?\}",
+              "export function getStaticPaths() {\n  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];\n  return slugs.map((slug) => ({ params: { slug } }));\n}",
+              text,
+              count=1,
+              flags=re.S,
+          )
+
+          text = re.sub(
+              r"const project = projectMap\[.*?\];",
+              "const project = projectMap[slug || '2b-agency'];",
+              text,
+              count=1,
           )
 
           text = re.sub(
@@ -76,6 +86,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
