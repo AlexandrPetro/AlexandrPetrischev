@@ -2,7 +2,7 @@
 import '../../styles/global.css';
 import { imageSources, localImages, pngUrl, imageUrl } from '../../data/images';
 
-const projectMap = {
+const projectMap: Record<string, { title: string }> = {
   '2b-agency': { title: '2b agency' },
   'yandex-crowd': { title: 'Яндекс крауд' },
   'tvoe-live': { title: 'Tvoe live' },
@@ -11,7 +11,7 @@ const projectMap = {
 };
 export function getStaticPaths() { return Object.keys(projectMap).map((slug) => ({ params: { slug } })); }
 const { slug } = Astro.params;
-const project = projectMap[slug as keyof typeof projectMap];
+const project = projectMap[slug || ''];
 const base = import.meta.env.BASE_URL;
 const localAsset = (project: keyof typeof localImages, key: string) => localImages[project]?.[key] ? `${base}${localImages[project][key]}` : null;
 const local2b = (key: string) => localAsset('2b-agency', key);
