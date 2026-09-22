@@ -9,7 +9,14 @@ const projectMap: Record<string, { title: string }> = {
   uprock: { title: 'Обучение в Uprock' },
   rassvetay: { title: 'Расцветай' },
 };
-export function getStaticPaths() { return Object.keys(projectMap).map((slug) => ({ params: { slug } })); }
+export function getStaticPaths() {
+  return [
+    { params: { slug: '2b-agency' } },
+    { params: { slug: 'tvoe-live' } },
+    { params: { slug: 'uprock' } },
+    { params: { slug: 'rassvetay' } },
+  ];
+}
 const { slug } = Astro.params;
 const project = projectMap[slug || ''];
 const base = import.meta.env.BASE_URL;
