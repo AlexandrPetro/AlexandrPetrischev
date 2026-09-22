@@ -30,7 +30,9 @@ const yandexImage = (name: string) => {
       <h1>Моё тестовое от яндекс крауда</h1>
     </section>
 
-    <div class="yandex-task-placeholder" aria-label="Техническое задание"></div>
+    <div class="yandex-task">
+      <img src={`${base}images/main/Yndx_task.png`} alt="Техническое задание" />
+    </div>
 
     <section class="yandex-process">
       <div class="yandex-process-intro">
@@ -126,12 +128,18 @@ const yandexImage = (name: string) => {
     margin: 0;
   }
 
-  .yandex-task-placeholder {
+  .yandex-task {
     width: 800px;
     max-width: 100%;
-    height: 566px;
     margin-top: 68px;
     background: #e3e3e3;
+    overflow: hidden;
+  }
+
+  .yandex-task img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .yandex-process {
@@ -238,11 +246,6 @@ const yandexImage = (name: string) => {
       max-width: calc(100% - 48px);
       margin-top: 56px;
     }
-
-    .yandex-task-placeholder {
-      height: auto;
-      aspect-ratio: 800 / 566;
-    }
   }
 
   @media (max-width: 600px) {
@@ -255,7 +258,7 @@ const yandexImage = (name: string) => {
       font-size: 32px;
     }
 
-    .yandex-task-placeholder {
+    .yandex-task {
       margin-top: 40px;
     }
 
