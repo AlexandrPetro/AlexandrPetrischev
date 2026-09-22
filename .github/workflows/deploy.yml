@@ -19,55 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24
       - name: Install dependencies
         run: npm install
-      - name: Fix Astro source compatibility
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-
-          path = Path('src/pages/projects/[slug].astro')
-          text = path.read_text()
-
-          old_paths = "export function getStaticPaths() { return Object.keys(projectMap).map((slug) => ({ params: { slug } })); }"
-          new_paths = "export function getStaticPaths() {\n  const slugs = ['2b-agency', 'yandex-crowd', 'tvoe-live', 'uprock', 'rassvetay'];\n  return slugs.map((slug) => ({ params: { slug } }));\n}"
-          text = text.replace(old_paths, new_paths)
-
-          text = re.sub(
-              r"const project = projectMap\[.*?\];",
-              "const project = projectMap[slug || '2b-agency'];",
-              text,
-              count=1,
-          )
-
-          text = re.sub(
-              r"const img = .*?;\n---",
-              '''const img = (key: string, alt: string, height: number, rounded = false) => {
-            const source = local2b(key);
-            const className = `placeholder ${rounded ? 'rounded' : ''}`;
-            const image = source ? `<img src="${source}" alt="${alt}" />` : '';
-            return `<div class="${className}" style="--placeholder-height:${height}px">${image}</div>`;
-          };
-          ---''',
-              text,
-              count=1,
-              flags=re.S,
-          )
-
-          text = re.sub(
-              r"\{img\(([^{}\n]*)\)\}",
-              r"<Fragment set:html={img(\1)} />",
-              text,
-          )
-
-          path.write_text(text)
-          PY
       - name: Build
         run: npm run build
       - name: Upload artifact
