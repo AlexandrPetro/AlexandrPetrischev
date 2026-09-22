@@ -14,10 +14,8 @@ const project = projectMap[slug || ''];
 const base = import.meta.env.BASE_URL;
 const localAsset = (project: keyof typeof localImages, key: string) => localImages[project]?.[key] ? `${base}${localImages[project][key]}` : null;
 const local2b = (key: string) => localAsset('2b-agency', key);
-const localYandex = (key: string) => localAsset('yandex-crowd', key);
 const remote = (group: keyof typeof imageSources, name: string) => pngUrl(imageSources[group].base, name);
 const img = (key: string, alt: string, height: number, rounded = false) => <div class={`placeholder ${rounded ? 'rounded' : ''}`} style={`--placeholder-height:${height}px`}>{local2b(key) && <img src={local2b(key)!} alt={alt} />}</div>;
-const yandexImg = (key: string, alt: string, width: number, height: number) => <div class="yandex-frame" style={`width:${width}px;aspect-ratio:${width}/${height}`}><>{localYandex(key) && <img src={localYandex(key)!} alt={alt} />}</></div>;
 ---
 <html lang="ru">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><title>{project.title} — Александр Петрищев</title></head>
