@@ -58,28 +58,28 @@ const yandexImage = (name: string) => `${base}images/yandex/${name}.png`;
         <ol start="3">
           <li>Формулировка концепции</li>
         </ol>
-        <div class="yandex-frame" style={`background-image:url("${yandexImage('img_concept')}")`} aria-label="Формулировка концепции"></div>
+        <div class="yandex-frame yandex-frame-concept" style={`background-image:url("${yandexImage('img_concept')}")`} aria-label="Формулировка концепции"></div>
       </div>
 
       <div class="yandex-numbered-image">
         <ol start="4">
           <li>Подбор референсов</li>
         </ol>
-        <div class="yandex-frame" style={`background-image:url("${yandexImage('img_ref')}")`} aria-label="Подбор референсов"></div>
+        <div class="yandex-frame yandex-frame-ref" style={`background-image:url("${yandexImage('img_ref')}")`} aria-label="Подбор референсов"></div>
       </div>
 
       <div class="yandex-numbered-image">
         <ol start="5">
           <li>Прототип</li>
         </ol>
-        <div class="yandex-frame" style={`background-image:url("${yandexImage('img_prot')}")`} aria-label="Прототип"></div>
+        <div class="yandex-frame yandex-frame-prot" style={`background-image:url("${yandexImage('img_prot')}")`} aria-label="Прототип"></div>
       </div>
 
       <div class="yandex-numbered-image yandex-final">
         <ol start="6">
           <li>Финальный макет</li>
         </ol>
-        <div class="yandex-frame" style={`background-image:url("${yandexImage('img_design')}")`} aria-label="Финальный макет"></div>
+        <div class="yandex-frame yandex-frame-design" style={`background-image:url("${yandexImage('img_design')}")`} aria-label="Финальный макет"></div>
       </div>
     </section>
 
@@ -212,16 +212,10 @@ const yandexImage = (name: string) => `${base}images/yandex/${name}.png`;
     margin-top: 0;
   }
 
-  .yandex-numbered-image .yandex-frame {
-    aspect-ratio: 800 / 1;
-    height: auto;
-    min-height: 200px;
-  }
-
-  .yandex-numbered-image:nth-of-type(3) .yandex-frame { aspect-ratio: 800 / 455.367; min-height: 0; }
-  .yandex-numbered-image:nth-of-type(4) .yandex-frame { aspect-ratio: 800 / 241.28; min-height: 0; }
-  .yandex-numbered-image:nth-of-type(5) .yandex-frame { aspect-ratio: 800 / 618.899; min-height: 0; }
-  .yandex-final .yandex-frame { aspect-ratio: 800 / 1916.111; min-height: 0; }
+  .yandex-frame-concept { aspect-ratio: 800 / 455.367; }
+  .yandex-frame-ref { aspect-ratio: 800 / 241.28; }
+  .yandex-frame-prot { aspect-ratio: 800 / 618.899; }
+  .yandex-frame-design { aspect-ratio: 800 / 1916.111; }
 
   .project-link {
     margin-top: 60px;
