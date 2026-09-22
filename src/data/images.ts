@@ -61,7 +61,15 @@ export const localImages: Record<string, Record<string, string>> = {
     '2b_mobile': 'images/main/2b_mobile.png',
   },
   'tvoe-live': {},
-  'yandex-crowd': {},
+  'yandex-crowd': {
+    // Заглушки из Figma с приставкой img. Добавляй сюда свои PNG из public/images/yandex/.
+    'img_analis': 'images/yandex/img_analis.png',
+    'img_analis2': 'images/yandex/img_analis2.png',
+    'img_concept': 'images/yandex/img_concept.png',
+    'img_ref': 'images/yandex/img_ref.png',
+    'img_prot': 'images/yandex/img_prot.png',
+    'img_design': 'images/yandex/img_design.png',
+  },
   uprock: {},
   rassvetay: {},
 };
