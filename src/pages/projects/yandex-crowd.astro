@@ -1,8 +1,12 @@
 ---
 import '../../styles/global.css';
+import { localImages } from '../../data/images';
 
 const base = import.meta.env.BASE_URL;
-const yandexImage = (name: string) => `${base}images/yandex/${name}.png`;
+const yandexImage = (name: string) => {
+  const path = localImages['yandex-crowd']?.[name];
+  return path ? `${base}${path}` : '';
+};
 ---
 
 <html lang="ru">
