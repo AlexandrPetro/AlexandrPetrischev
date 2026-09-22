@@ -83,7 +83,7 @@ const yandexImage = (name: string) => {
         <ol start="6">
           <li>Финальный макет</li>
         </ol>
-        <div class="yandex-frame yandex-frame-design" style={`background-image:url("${yandexImage('img_design')}")`} aria-label="Финальный макет"></div>
+        <img class="yandex-final-image" src={yandexImage('img_design')} alt="Финальный макет" />
       </div>
     </section>
 
@@ -219,7 +219,12 @@ const yandexImage = (name: string) => {
   .yandex-frame-concept { aspect-ratio: 800 / 455.367; }
   .yandex-frame-ref { aspect-ratio: 800 / 241.28; }
   .yandex-frame-prot { aspect-ratio: 800 / 618.899; }
-  .yandex-frame-design { aspect-ratio: 800 / 1916.111; }
+  .yandex-final-image {
+    width: 800px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
   .project-link {
     margin-top: 60px;
