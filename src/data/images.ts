@@ -63,7 +63,7 @@ export const localImages: Record<string, Record<string, string>> = {
   'tvoe-live': {},
   'yandex-crowd': {
     // Заглушки из Figma с приставкой img. Добавляй сюда свои PNG из public/images/yandex/.
-    'img_analis': 'images/yandex/img_analis.png',
+    'img_analis': 'images/main/Yndx_analis.png',
     'img_analis2': 'images/yandex/img_analis2.png',
     'img_concept': 'images/yandex/img_concept.png',
     'img_ref': 'images/yandex/img_ref.png',
