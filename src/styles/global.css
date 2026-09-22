@@ -40,7 +40,7 @@ h2 { font-size: 20px; font-weight: 600; line-height: 1.1; }
 .project p { font-size: 14px; line-height: 20px; }
 .project-link { font-size: 16px; text-decoration: underline; text-underline-offset: 3px; }
 .preview { width: 100%; height: 400px; overflow: hidden; display: block; background: #f8f8f8; }
-.preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.preview img, .preview video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .case-study { display: flex; flex-direction: column; gap: 96px; }
 .case-intro { display: flex; flex-direction: column; gap: 32px; }
 .case-section { display: flex; flex-direction: column; gap: 24px; }
