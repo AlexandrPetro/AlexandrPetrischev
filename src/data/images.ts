@@ -50,7 +50,7 @@ export const localImages: Record<string, Record<string, string>> = {
     'nic_price': 'images/main/NIC_price.png',
     'nic_allcase': 'images/main/NIC_allcase.png',
     'nic_case': 'images/main/NIC_case.png',
-    'nic_mobile': 'imagesmain/NIC_mobile.png',
+    'nic_mobile': 'images/main/NIC_mobile.png',
     'nic_uikit_1': 'images/main/NIC_uikit1.png',
     'nic_uikit_2': 'images/main/NIC_uikit2.png',
     // '2b_before': 'images/2b/2b-before.png',
