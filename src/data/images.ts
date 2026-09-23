@@ -87,7 +87,17 @@ export const localImages: Record<string, Record<string, string>> = {
     'img_bazar': 'images/main/uprock_bazar.png',
     'img_ride': 'images/main/uprock_ride.png',
   },
-  rassvetay: {},
+  rassvetay: {
+    // Серые фреймы из Figma с приставкой img — это заглушки.
+    // Чтобы поставить своё изображение, положи файл в public/images/rassvetay/
+    // и укажи здесь путь относительно public. Например:
+    // 'img_advertising': 'images/rassvetay/advertising.png',
+    'img_advertising': '',
+    'img_loft_science': '',
+    'img_rebrand': '',
+    'img_site_original': '',
+    'img_site_redesign': '',
+  },
 };
 
 const projectByBase: Record<string, string> = Object.fromEntries(Object.entries(imageSources).map(([project, source]) => [source.base, project]));
