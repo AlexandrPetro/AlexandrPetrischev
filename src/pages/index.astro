@@ -11,6 +11,7 @@ const projects = [
     description: 'Агентство медицинского маркетинга полного цикла: комплексный подход к медицинскому маркетингу, сочетающий понимание отрасли с креативными стратегиями и аналитикой.',
     linkLabel: 'Что я делал в 2b',
     video: `${base}images/main/2b_agency_cover.mp4`,
+    poster: `${base}images/main/2b_agency_cover.png`,
   },
   {
     slug: 'yandex-crowd',
@@ -118,6 +119,7 @@ const projects = [
             {project.video ? (
               <video
                 src={project.video}
+                poster={project.poster}
                 autoplay
                 muted
                 loop
