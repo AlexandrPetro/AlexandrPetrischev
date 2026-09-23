@@ -4,13 +4,14 @@ import { localImages } from '../data/images';
 interface Props {
   key: string;
   alt: string;
+  project?: string;
   height: number;
   rounded?: boolean;
 }
 
-const { key, alt, height, rounded = false } = Astro.props;
+const { key, alt, height, rounded = false, project = '2b-agency' } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const src = localImages['2b-agency']?.[key];
+const src = localImages[project]?.[key] || null;
 const classes = rounded ? 'placeholder rounded' : 'placeholder';
 ---
 <div class={classes} style={`--placeholder-height:${height}px`}>
