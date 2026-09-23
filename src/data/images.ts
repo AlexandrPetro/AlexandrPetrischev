@@ -21,6 +21,9 @@ export const imageSources = {
     base: 'https://www.figma.com/api/mcp/asset/4eab8378-6695-404d-b137-09629b1e94b1',
     files: { logo: 'ceb49', brief: '885f1', process: ['5c1c0', 'c6a39', '9eb52', 'fc9a7', '89872', '07b3a', '2a45a'] },
   },
+  'yandex-crowd': {
+    'task': 'images/main/Yndx_task.png',
+  },
   'tvoe-live': {
     base: 'https://www.figma.com/api/mcp/asset/97d7d5f4-c7e1-48aa-ac50-e0f7f23d5bfe',
     files: { logo: 'c412e.svg', designSystem: ['b0c87', '86ec0'], web: ['95388', '7980a', '1cede', '0ebba', '9da5d', 'bba69', 'd7d98', '04fed'] },
