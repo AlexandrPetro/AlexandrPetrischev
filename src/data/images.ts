@@ -27,7 +27,7 @@ export const imageSources = {
   },
   uprock: {
     base: 'https://www.figma.com/api/mcp/asset/bf6ee8e9-d0e0-4b6a-85f5-6df57f85eae6',
-    files: { logo: 'eb103.svg', corporate: ['0a69c', '9d5d1', 'a206d', 'c8de1', 'c5182', 'a8a40', 'e5459', '6d87f', '551d9', '6820b', '17ba1', '0c8fb', '3ba22'], shop: ['8c2b8', '60ead', 'feb16', '85f0c', '5528d', '34695', 'ca87e'], mobile: ['28b97', 'dbfa8', '28d1a', 'e3438', '1b922', '283b6'] },
+    files: { logo: 'eb103.svg' },
   },
   rassvetay: {
     base: 'https://www.figma.com/api/mcp/asset/63a0eff5-6770-4c84-a52e-5e74dbe1b7e6',
@@ -79,7 +79,14 @@ export const localImages: Record<string, Record<string, string>> = {
     'img_prot': 'images/main/Yndx_prot.png',
     'img_design': 'images/main/Yndx_design.png',
   },
-  uprock: {},
+  uprock: {
+    // Серые фреймы из Figma с приставкой img.
+    // Положи свои файлы в public/images/uprock/ и замени '' на путь к файлу.
+    'img_doordash': '',
+    'img_yamaha': '',
+    'img_bazar': '',
+    'img_ride': '',
+  },
   rassvetay: {},
 };
 
