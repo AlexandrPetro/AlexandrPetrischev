@@ -63,13 +63,12 @@ export const localImages: Record<string, Record<string, string>> = {
   'tvoe-live': {
     // Серые фреймы из Figma с приставкой Img_. Чтобы поставить своё изображение,
     // укажи путь к файлу относительно public, например:
-    // 'Img_TvoeDS': 'images/tvoe/TvoeDS.png'
-    'Img_TvoeDS': '',
-    'Img_TvoeDS2': '',
-    'Img_TvoeMainold_1': '',
-    'Img_TvoeMainold_2': '',
-    'Img_TvoeSelection': '',
-    'Img_TvoeSelectionFilm': '',
+    'Img_TvoeDS': 'images/main/Img_TvoeDS.png',
+    'Img_TvoeDS2': 'images/main/Img_TvoeDS2.png',
+    'Img_TvoeMainold_1': 'images/main/Img_TvoeMainold.png',
+    'Img_TvoeMainold_2': 'images/main/Img_TvoeMainnew.png',
+    'Img_TvoeSelection': 'images/main/Img_TvoeSelection.png',
+    'Img_TvoeSelectionFilm': 'images/main/Img_TvoeSelectionFilm.png',
   },
   'yandex-crowd': {
     // Заглушки из Figma с приставкой img. Добавляй сюда свои PNG из public/images/yandex/.
