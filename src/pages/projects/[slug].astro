@@ -136,7 +136,7 @@ const remote = (group: keyof typeof imageSources, name: string) => pngUrl(imageS
   <ImageBlock project="tvoe-live" key="Img_TvoeSelectionFilm" alt="Страница фильма из подборки Tvoe" height={258} />
 </section>
 </div>)}
-{slug === 'uprock' && (<div class="project-content"><section class="case-intro uprock-intro"><img class="uprock-logo" src={imageUrl(imageSources.uprock.base,imageSources.uprock.files.logo)} alt="Логотип Uprock" /><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года.</p></section><section class="case-section"><h2>Корпоративные сайты</h2>{imageSources.uprock.files.corporate.map((name) => <img class="case-image" src={remote('uprock',name)} alt="Корпоративный сайт" />)}</section><section class="case-section"><h2>Интернет-магазин</h2>{imageSources.uprock.files.shop.map((name) => <img class="case-image" src={remote('uprock',name)} alt="Интернет-магазин" />)}</section><section class="case-section"><h2>Мобильное приложение</h2>{imageSources.uprock.files.mobile.map((name) => <img class="case-image" src={remote('uprock',name)} alt="Мобильное приложение" />)}</section></div>)}
+{slug === 'uprock' && (<div class="project-content"><section class="case-intro uprock-intro"><div class="uprock-logo-box"><img class="uprock-logo" src={imageUrl(imageSources.uprock.base,imageSources.uprock.files.logo)} alt="Логотип Uprock" /></div><h1>Курс Middle UX/UI designer</h1><p class="intro">Uprock — образовательная платформа и дизайн-студия. Обучение длилось 1,5 года.</p></section><section class="case-section"><h2>Корпоративные сайты</h2>{imageSources.uprock.files.corporate.map((name) => <img class="case-image" src={remote('uprock',name)} alt="Корпоративный сайт" />)}</section><section class="case-section"><h2>Интернет-магазин</h2>{imageSources.uprock.files.shop.map((name) => <img class="case-image" src={remote('uprock',name)} alt="Интернет-магазин" />)}</section><section class="case-section"><h2>Мобильное приложение</h2>{imageSources.uprock.files.mobile.map((name) => <img class="case-image" src={remote('uprock',name)} alt="Мобильное приложение" />)}</section></div>)}
 {slug === 'rassvetay' && (<div class="project-content"><section class="case-intro rassvetay-intro"><img class="rassvetay-logo" src={imageUrl(imageSources.rassvetay.base,imageSources.rassvetay.files.logo)} alt="Логотип Расцветай" /><h1>Что я делал в Расцветай</h1><p class="intro">Группа компаний «Расцветай» — девелоперская компания из Новосибирска.</p></section><section class="case-section"><h2>Мои обязанности</h2><ul><li>Дизайн рекламных материалов</li><li>Разработка и поддержка фирменного стиля</li><li>Дизайн социальных сетей</li><li>Дизайн сайта</li></ul></section><section class="case-section"><h2>Рекламные материалы</h2>{['e0ce5','a9a84'].map((name) => <img class="case-image" src={remote('rassvetay',name)} alt="Рекламные материалы" />)}</section><section class="case-section"><h2>Редизайн сайта</h2>{['899a0','071a0','b1edf','67604','ca4d2','19f07'].map((name) => <img class="case-image" src={remote('rassvetay',name)} alt="Редизайн сайта" />)}</section></div>)}
 <a class="project-link" href={base}>← Вернуться к проектам</a>
 </main></body></html>
@@ -163,4 +163,18 @@ const remote = (group: keyof typeof imageSources, name: string) => pngUrl(imageS
 .tvoe-web .caption + .placeholder{margin-top:0}
 .tvoe-web .caption + .placeholder + .caption{margin-top:24px}
 .tvoe-web ul{gap:0}
+
+.uprock-project{gap:0;margin-top:-48px}
+.uprock-project .uprock-intro{gap:40px}
+.uprock-logo-box{width:110px;height:110px;background:#f8f8f8;display:flex;align-items:center;justify-content:center}
+.uprock-logo{width:88.24px;height:30.69px;max-width:none;max-height:none;object-fit:contain}
+.uprock-meta{display:flex;flex-direction:column;gap:20px;margin-top:40px}
+.uprock-meta>div{display:flex;flex-direction:column;gap:8px;min-height:51px}
+.uprock-meta span{font-size:16px;line-height:19px;color:#808080}
+.uprock-meta p{font-size:20px;line-height:24px;margin:0}
+.uprock-nav{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:40px;width:100%;font-size:14px;line-height:17px;white-space:nowrap;margin-top:127px}
+.uprock-nav a{text-decoration:underline;text-underline-offset:3px}
+.uprock-section{gap:20px;margin-top:40px}
+.uprock-section h2{font-size:20px;line-height:24px;font-weight:600}
+@media(max-width:600px){.uprock-project{margin-top:-32px}.uprock-nav{flex-wrap:wrap;white-space:normal;gap:12px 24px;margin-top:72px}.uprock-section{margin-top:40px}.uprock-logo-box{width:88px;height:88px}.uprock-logo{width:72px;height:auto}}
 </style>
