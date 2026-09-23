@@ -5,6 +5,7 @@ import ImageBlock from '../../components/ImageBlock.astro';
 
 const projectMap: Record<string, { title: string }> = {
   '2b-agency': { title: '2b agency' },
+  'yandex-crowd': { title: 'Яндекс крауд' },
   'tvoe-live': { title: 'Tvoe live' },
   uprock: { title: 'Обучение в Uprock' },
   rassvetay: { title: 'Расцветай' },
@@ -12,6 +13,7 @@ const projectMap: Record<string, { title: string }> = {
 export function getStaticPaths() {
   return [
     { params: { slug: '2b-agency' } },
+    { params: { slug: 'yandex-crowd' } },
     { params: { slug: 'tvoe-live' } },
     { params: { slug: 'uprock' } },
     { params: { slug: 'rassvetay' } },
