@@ -9,7 +9,7 @@ a:hover { opacity: .65; }
 .site-header { display: flex; justify-content: space-between; align-items: center; padding: 24px; }
 .brand { display: flex; align-items: center; gap: 7px; font-size: 16px; }
 .brand-mark { width: 24px; height: 24px; background: #e3e3e3; display: block; }
-.search-mark { font-size: 24px; line-height: 1; }
+.search-mark { width: 24px; height: 24px; display: block; object-fit: contain; }
 .container { width: 800px; margin: 56px auto 24px; }
 .section { margin-bottom: 80px; }
 .hero { display: flex; flex-direction: column; gap: 40px; }
