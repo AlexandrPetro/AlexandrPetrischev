@@ -60,7 +60,17 @@ export const localImages: Record<string, Record<string, string>> = {
     '2b_allpage': 'images/main/2b_allpage.png',
     '2b_mobile': 'images/main/2b_mobile.png',
   },
-  'tvoe-live': {},
+  'tvoe-live': {
+    // Серые фреймы из Figma с приставкой Img_. Чтобы поставить своё изображение,
+    // укажи путь к файлу относительно public, например:
+    // 'Img_TvoeDS': 'images/tvoe/TvoeDS.png'
+    'Img_TvoeDS': '',
+    'Img_TvoeDS2': '',
+    'Img_TvoeMainold_1': '',
+    'Img_TvoeMainold_2': '',
+    'Img_TvoeSelection': '',
+    'Img_TvoeSelectionFilm': '',
+  },
   'yandex-crowd': {
     // Заглушки из Figma с приставкой img. Добавляй сюда свои PNG из public/images/yandex/.
     'img_analis': 'images/main/Yndx_analis.png',
