@@ -83,9 +83,9 @@ export const localImages: Record<string, Record<string, string>> = {
     // Серые фреймы из Figma с приставкой img.
     // Положи свои файлы в public/images/uprock/ и замени '' на путь к файлу.
     'img_doordash': 'images/main/uprock_doordash.png',
-    'img_yamaha': 'images/main/uprock_yamaha',
-    'img_bazar': 'images/main/uprock_bazar',
-    'img_ride': 'images/main/uprock_ride',
+    'img_yamaha': 'images/main/uprock_yamaha.png',
+    'img_bazar': 'images/main/uprock_bazar.png',
+    'img_ride': 'images/main/uprock_ride.png',
   },
   rassvetay: {},
 };
