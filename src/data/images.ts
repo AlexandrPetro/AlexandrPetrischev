@@ -95,11 +95,11 @@ export const localImages: Record<string, Record<string, string>> = {
     // Чтобы поставить своё изображение, положи файл в public/images/rassvetay/
     // и укажи здесь путь относительно public. Например:
     // 'img_advertising': 'images/rassvetay/advertising.png',
-    'img_advertising': 'images/main/rascvetai_add.png',
-    'img_loft_science': 'images/main/rascvetai_loft.png',
-    'img_rebrand': 'images/main/rascvetai_rebrand.png',
-    'img_site_original': 'images/main/rascvetai_mainold.png',
-    'img_site_redesign': 'images/main/rascvetai_mainnew.png',
+    'img_advertising': 'images/main/rascvetai_add.webp',
+    'img_loft_science': 'images/main/rascvetai_loft.webp',
+    'img_rebrand': 'images/main/rascvetai_rebrand.webp',
+    'img_site_original': 'images/main/rascvetai_mainold.webp',
+    'img_site_redesign': 'images/main/rascvetai_mainnew.webp',
   },
 };
 
