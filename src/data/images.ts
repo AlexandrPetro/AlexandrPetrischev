@@ -75,12 +75,12 @@ export const localImages: Record<string, Record<string, string>> = {
   },
   'yandex-crowd': {
     // Заглушки из Figma с приставкой img. Добавляй сюда свои PNG из public/images/yandex/.
-    'img_analis': 'images/main/Yndx_analis.png',
-    'img_analis2': 'images/main/Yndx_analis2.png',
-    'img_concept': 'images/main/Yndx_concept.png',
-    'img_ref': 'images/main/Yndx_ref.png',
-    'img_prot': 'images/main/Yndx_prot.png',
-    'img_design': 'images/main/Yndx_design.png',
+    'img_analis': 'images/main/Yndx_analis.webp',
+    'img_analis2': 'images/main/Yndx_analis2.webp',
+    'img_concept': 'images/main/Yndx_concept.webp',
+    'img_ref': 'images/main/Yndx_ref.webp',
+    'img_prot': 'images/main/Yndx_prot.webp',
+    'img_design': 'images/main/Yndx_design.webp',
   },
   uprock: {
     // Серые фреймы из Figma с приставкой img.
