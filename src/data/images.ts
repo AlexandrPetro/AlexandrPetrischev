@@ -46,7 +46,7 @@ export const localImages: Record<string, Record<string, string>> = {
     'main_before_2': 'images/main/NIC_old2.png',
     'main_before_3': 'images/main/NIC_old3.png',
     'nic_main': 'images/main/NIC_mainpage.png',
-    'nic_doctorpage': 'images/main/NIC_doctorpage.png',
+    'nic_doctorpage': 'images/main/NIC_doctorpage.webp',
     'nic_action_1': 'images/main/NIC_action1.png',
     'nic_action_2': 'images/main/NIC_action2.png',
     'nic_service': 'images/main/NIC_service.png',
